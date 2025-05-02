@@ -8,6 +8,8 @@ import SupplierDetails from "./login and signup pages/SupplierDetails";
 import TaxDetails from "./login and signup pages/TaxDetails";
 import PickupAddress from "./login and signup pages/Pickup address/PickupAddress";
 import BankDetails from "./login and signup pages/BankDetails";
+import Dashboard from "./pages/Dashbaord";
+import Layout from "./layout/layout";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -18,4 +20,9 @@ export const router = createBrowserRouter([
   { path: "/taxdetails", element: <Skelton Comp={TaxDetails} /> },
   { path: "/pickupaddress", element: <Skelton Comp={PickupAddress} /> },
   { path: "/bankdetails", element: <Skelton Comp={BankDetails} /> },
+  {
+    path: "/",
+    element: <Layout />,
+    children: [{ path: "/", element: <Dashboard /> }],
+  },
 ]);

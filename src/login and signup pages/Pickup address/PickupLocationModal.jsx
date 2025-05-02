@@ -8,7 +8,7 @@ const PickupLocationModal = ({ setNewLocationModal,handleUseCurrentLocation }) =
   return (
     <div>
       {/* top things */}
-      <h1 className="text-xl font-semibold mb-3">Select pickup location</h1>
+      <h1 className="text-xl font-semibold mt-3 mb-3">Select pickup location</h1>
       <div>
         <Searchbar />
       </div>

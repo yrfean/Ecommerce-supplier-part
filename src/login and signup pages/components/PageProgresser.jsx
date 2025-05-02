@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
-import { CircleUser, MapPin, ReceiptText, Landmark } from "lucide-react";
+import {
+  CircleUser,
+  MapPin,
+  ReceiptText,
+  Landmark,
+  ArrowLeft,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const PageProgresser = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(false);
   useEffect(() => {
     const path = window.location.pathname;
@@ -10,6 +18,12 @@ const PageProgresser = () => {
 
   return (
     <div className="my-3 flex w-full gap-3 justify-center items-center text-[#E7E7E7]">
+      <div
+        onClick={() => navigate(-1)}
+        className="text-gray-500 cursor-pointer"
+      >
+        <ArrowLeft />
+      </div>
       {/* supplier details */}
       <div
         className={`${

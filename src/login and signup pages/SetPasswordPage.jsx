@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "./components/Input";
+import Input from "../components/Input";
 import { Mail, LockKeyhole, Eye, EyeOff } from "lucide-react";
-import Button from "./components/Button";
+import Button from "../Button";
 import * as yup from "yup";
 import { useFormik } from "formik";
 

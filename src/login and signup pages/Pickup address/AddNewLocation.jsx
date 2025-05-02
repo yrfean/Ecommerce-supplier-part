@@ -1,4 +1,4 @@
-import Input from "../components/Input";
+import Input from "../../components/Input";
 import * as yup from "yup";
 import { useFormik } from "formik";
 
@@ -10,7 +10,7 @@ const validationSchema = yup.object({
   state: yup.string().required("required"),
 });
 
-const AddNewLocation = ({setNewLocationModal}) => {
+const AddNewLocation = ({ setNewLocationModal }) => {
   const formik = useFormik({
     initialValues: {
       buildingNumber: "",
@@ -58,7 +58,10 @@ const AddNewLocation = ({setNewLocationModal}) => {
       ))}
 
       <div className="flex mt-7 w-full justify-end gap-3">
-        <button onClick={()=>setNewLocationModal(false)} className="bg-[#F6FBF8] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-[#47BA82] hover:bg-[#47BA82] hover:text-white outline outline-[#47BA82]">
+        <button
+          onClick={() => setNewLocationModal(false)}
+          className="bg-[#F6FBF8] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-[#47BA82] hover:bg-[#47BA82] hover:text-white outline outline-[#47BA82]"
+        >
           Cancel
         </button>
         <button className="bg-[#47BA82] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-white hover:bg-[#3DA372] outline outline-[#47BA82]">

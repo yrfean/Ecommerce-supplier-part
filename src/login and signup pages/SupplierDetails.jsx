@@ -3,7 +3,7 @@ import PageProgresser from "./components/PageProgresser";
 import { Plus } from "lucide-react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Input from "./components/Input";
+import Input from "../components/Input";
 import DropDown from "../components/DropDown";
 
 const categories = [

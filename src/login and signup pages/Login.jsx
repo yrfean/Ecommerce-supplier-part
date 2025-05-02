@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "./components/Input";
+import Input from "../components/Input";
 import { Mail, LockKeyhole, Eye, EyeOff } from "lucide-react";
-import Button from "./components/Button";
+import Button from "../Button";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +13,7 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
 
   //formik handling
   const formik = useFormik({
@@ -84,7 +83,10 @@ const Login = () => {
       <p className="mb-2">Dont have an account yet? Create New :)</p>
 
       {/* create new button */}
-      <button onClick={()=>navigate("/otpvalidation")} className="text-center shadow cursor-pointer rounded-lg h-[47px] w-full outline outine-[#47BA82] hover:bg-[#47BA82] hover:text-white transition-all duration-300 text-[#47BA82] hover-white font-bold tracking-wide">
+      <button
+        onClick={() => navigate("/otpvalidation")}
+        className="text-center shadow cursor-pointer rounded-lg h-[47px] w-full outline outine-[#47BA82] hover:bg-[#47BA82] hover:text-white transition-all duration-300 text-[#47BA82] hover-white font-bold tracking-wide"
+      >
         Create new account
       </button>
     </div>
