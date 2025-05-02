@@ -6,7 +6,7 @@ import ErrorPage from "./error page/ErrorPage";
 import Skelton from "./login and signup pages/Skelton";
 import SupplierDetails from "./login and signup pages/SupplierDetails";
 import TaxDetails from "./login and signup pages/TaxDetails";
-import PickupAddress from "./login and signup pages/PickupAddress";
+import PickupAddress from "./login and signup pages/Pickup address/PickupAddress";
 import BankDetails from "./login and signup pages/BankDetails";
 
 export const router = createBrowserRouter([

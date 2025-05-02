@@ -86,7 +86,7 @@ const SupplierDetails = () => {
             Upload your photo
           </p>
           <p className="text-sm mb-3 text-gray-600">
-            ~Kindly upload proffesional photo
+            ~Kindly upload professional photo
           </p>
           <input
             onChange={handleInputChange}
@@ -105,7 +105,7 @@ const SupplierDetails = () => {
       </div>
 
       {/* Personal information */}
-      <h1 className="text-xl mt-3 mb-2 font-semibold">Personal information</h1>
+      <h1 className="text-xl mt-4 mb-3 font-semibold">Personal information</h1>
       <div className="grid grid-cols-2 gap-x-3 gap-y-0">
         {/* supplier name */}
         <div>
@@ -173,15 +173,14 @@ const SupplierDetails = () => {
             placeholder="Enter your place..."
           />
         </div>
-
-        <div className="flex gap-3">
-          <button className="bg-[#F6FBF8] cursor-pointer w-44 py-1 transition-all duration-300 rounded-lg font-semibold text-[#47BA82] hover:bg-[#47BA82] hover:text-white outline outline-[#47BA82]">
-            Cancel
-          </button>
-          <button className="bg-[#47BA82] cursor-pointer w-44 py-1 transition-all duration-300 rounded-lg font-semibold text-white hover:bg-[#3DA372] outline">
-            Next
-          </button>
-        </div>
+      </div>
+      <div className="flex w-full justify-end gap-3">
+        <button className="bg-[#F6FBF8] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-[#47BA82] hover:bg-[#47BA82] hover:text-white outline outline-[#47BA82]">
+          Cancel
+        </button>
+        <button className="bg-[#47BA82] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-white hover:bg-[#3DA372] outline outline-[#47BA82]">
+          Next
+        </button>
       </div>
     </div>
   );
