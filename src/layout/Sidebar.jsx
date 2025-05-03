@@ -2,8 +2,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import React from "react"
-
+import React from "react";
 
 const navitems = [
   { name: "Dashbaord", location: "/", icon: "si:dashboard-line" },
@@ -12,9 +11,9 @@ const navitems = [
     location: "/product",
     icon: "fluent-mdl2:product",
     children: [
-      { name: "Advertising windows", location: "/product/advertisingwindows" },
-      { name: "Advance storage", location: "/product/advancestorage" },
-      { name: "Expiry list", location: "/product/expirylist" },
+      { name: "Advertising windows", location: "/product/advertising-windows" },
+      { name: "Advance storage", location: "/product/advance-storage" },
+      { name: "Expiry list", location: "/product/expiry-list" },
     ],
   },
   {
@@ -24,7 +23,7 @@ const navitems = [
     children: [
       { name: "Return", location: "/order/return" },
       { name: "Shipping", location: "/order/shipping" },
-      { name: "Shipping Schedule", location: "/order/shippingschedule" },
+      { name: "Shipping Schedule", location: "/order/shipping-schedule" },
     ],
   },
   { name: "Offers", location: "/offers", icon: "ic:outline-local-offer" },
@@ -35,7 +34,7 @@ const navitems = [
     children: [
       { name: "Refund", location: "/payments/refund" },
       { name: "Wallet", location: "/payments/wallet" },
-      { name: "Accounts ledger", location: "/payments/accountsledger" },
+      { name: "Accounts ledger", location: "/payments/accounts-ledger" },
     ],
   },
   {
@@ -53,7 +52,7 @@ const navitems = [
     location: "/userrole",
     icon: "grommet-icons:user-new",
     children: [
-      { name: "Role managemenet", location: "/userrole/rolemanagement" },
+      { name: "Role managemenet", location: "/userrole/role-management" },
     ],
   },
   {
@@ -61,7 +60,7 @@ const navitems = [
     location: "/configuration",
     icon: "lucide:user-cog",
     children: [
-      { name: "ID configuration", location: "/configuration/idconfiguration" },
+      { name: "ID configuration", location: "/configuration/iD-configuration" },
       { name: "Email", location: "/configuration/email" },
     ],
   },

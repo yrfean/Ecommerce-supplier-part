@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AdvertisingWindows = () => {
-  return (
-    <div>AdvertisingWindows</div>
-  )
-}
+  return <div>advertising-windows</div>;
+};
 
-export default AdvertisingWindows
+export default AdvertisingWindows;

@@ -17,7 +17,6 @@ import PartialAccept from "./pages/partial accept/PartialAccept";
 import SalesSummery from "./pages/sales summery/SalesSummery";
 import UserRole from "./pages/user role/userRole";
 import Configuration from "./pages/configuration/Configuration";
-import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingWindows";
 import AdvanceStorage from "./pages/product/advance storage/AdvanceStorage";
 import ExpiryList from "./pages/product/expiry list/ExpiryList";
 import Return from "./pages/order/return/Return";
@@ -28,8 +27,9 @@ import RoleManagement from "./pages/user role/role management/RoleManagement";
 import IdConfiguration from "./pages/configuration/ID configuration/IdConfiguration";
 import Email from "./pages/configuration/email/Email";
 import Wallet from "./pages/payments/wallet/Wallet";
-import AccountsLedger from "./pages/payments/accounts ledger/AccountsLedger"
+import AccountsLedger from "./pages/payments/accounts ledger/AccountsLedger";
 import Offers from "./pages/offers/Offers";
+import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingWindows";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -46,24 +46,24 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/product", element: <Product /> },
-      { path: "/product/advertisingwindows", element: <AdvertisingWindows /> },
-      { path: "/product/advancestorage", element: <AdvanceStorage /> },
-      { path: "/product/expirylist", element: <ExpiryList /> },
+      { path: "/product/advertising-windows", element: <AdvertisingWindows /> },
+      { path: "/product/advance-storage", element: <AdvanceStorage /> },
+      { path: "/product/expiry-list", element: <ExpiryList /> },
       { path: "/order", element: <Order /> },
       { path: "/order/return", element: <Return /> },
       { path: "/order/shipping", element: <Shipping /> },
-      { path: "/order/shippingschedule", element: <ShippingSchedule /> },
-      { path: "/offers", element: <Offers/> },
+      { path: "/order/shipping-schedule", element: <ShippingSchedule /> },
+      { path: "/offers", element: <Offers /> },
       { path: "/payments", element: <Payments /> },
       { path: "/payments/refund", element: <Refund /> },
       { path: "/payments/wallet", element: <Wallet /> },
-      { path: "/payments/accountledger", element: <AccountsLedger /> },
+      { path: "/payments/accounts-ledger", element: <AccountsLedger /> },
       { path: "/partialaccept", element: <PartialAccept /> },
       { path: "/salessummery", element: <SalesSummery /> },
       { path: "/userrole", element: <UserRole /> },
-      { path: "/userrole/rolemanagement", element: <RoleManagement /> },
+      { path: "/userrole/role-management", element: <RoleManagement /> },
       { path: "/configuration", element: <Configuration /> },
-      { path: "/configuration/idconfiguration", element: <IdConfiguration /> },
+      { path: "/configuration/iD-configuration", element: <IdConfiguration /> },
       { path: "/configuration/email", element: <Email /> },
     ],
   },

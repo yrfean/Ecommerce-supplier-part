@@ -1,86 +1,52 @@
-import { Waypoints } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Map } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const navitems = [
-  { name: "Dashbaord", location: "/", icon: "si:dashboard-line" },
-  {
-    name: "Product",
-    location: "/product",
-    icon: "fluent-mdl2:product",
-    children: [
-      { name: "Advertising windows", location: "/product/advertisingwindows" },
-      { name: "Advance storage", location: "/product/advancestorage" },
-      { name: "Expiry list", location: "/product/expirylist" },
-    ],
-  },
-  {
-    name: "Order",
-    location: "/order",
-    icon: "material-symbols:orders-outline",
-    children: [
-      { name: "Return", location: "/order/return" },
-      { name: "Shipping", location: "/order/shipping" },
-      { name: "Shipping Schedule", location: "/order/shippingschedule" },
-    ],
-  },
-  { name: "Offers", location: "/offers", icon: "ic:outline-local-offer" },
-  {
-    name: "payment",
-    location: "/payments",
-    icon: "fluent-mdl2:payment-card",
-    children: [
-      { name: "Refund", location: "/payments/refund" },
-      { name: "Wallet", location: "/payments/wallet" },
-      { name: "Accounts ledger", location: "/payments/accountsledger" },
-    ],
-  },
-  {
-    name: "Partical accept",
-    location: "/partialaccept",
-    icon: "carbon:delivery-parcel",
-  },
-  {
-    name: "Sales summery",
-    location: "/salessummery",
-    icon: "icon-park-outline:sales-report",
-  },
-  {
-    name: "User role",
-    location: "/userrole",
-    icon: "grommet-icons:user-new",
-    children: [
-      { name: "Role managemenet", location: "/userrole/rolemanagement" },
-    ],
-  },
-  {
-    name: "Configuration",
-    location: "/configuration",
-    icon: "lucide:user-cog",
-    children: [
-      { name: "ID configuration", location: "/configuration/idconfiguration" },
-      { name: "Email", location: "/configuration/email" },
-    ],
-  },
-];
-const BreadCrumbs = () => {
-  const [path, setPath] = useState(window.location.pathname);
-
-  useEffect(() => {
-    setPath(window.location.pathname);
-  });
+const Breadcrumb = () => {
+  const location = useLocation();
+  const pathnames = location.pathname.split("/").filter((x) => x);
+  const navigate = useNavigate();
 
   return (
-    <div className="flex gap-4">
-      <Waypoints />
-      {navitems.map((item) =>
-        item.location === path ? (
-          <div className="relative">
-            <p className="text-2xl">{item.name} </p>
+    <nav className="flex items-center text-2xl space-x-2">
+      {/* icon */}
+      <div onClick={()=>navigate("/")} className="mt-1 cursor-pointer">
+        <Map />
+      </div>
+
+      {location.pathname === "/" ? (
+        <p className="text-gray-700 cursor-pointer font-semibold text-nowrap">
+          Dashboard{" "}
+        </p>
+      ) : null}
+
+      {pathnames.map((name, index) => {
+        const routeTo = "/" + pathnames.slice(0, index + 1);
+        const isLast = index === pathnames.length - 1;
+
+        return (
+          <div className="flex items-center space-x-2" key={index}>
+            <span className="text-gray-400">/</span>
+            {isLast ? (
+              <span className="text-gray-700 font-semibold text-nowrap">
+                {decodeURIComponent(name)
+                  .replace(/-/g, " ")
+                  .replace(/\b\w/g, (char) => char.toUpperCase())}
+              </span>
+            ) : (
+              <Link
+                to={routeTo}
+                className="text-gray-700 font-semibold hover:underline text-nowrap"
+              >
+                {decodeURIComponent(name)
+                  .replace(/-/g, " ")
+                  .replace(/\b\w/g, (char) => char.toUpperCase())}
+              </Link>
+            )}
           </div>
-        ) : null
-      )}
-    </div>
+        );
+      })}
+    </nav>
   );
 };
 
-export default BreadCrumbs;
+export default Breadcrumb;

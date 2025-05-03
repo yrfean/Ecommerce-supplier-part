@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className="w-full flex justify-between items-center h-[50px]">
       {/* breadcrumbs */}
-      <div>
+      <div className="overflow-x-scroll overflow-y-hidden custom-scrollbar">
         <BreadCrumbs/>
       </div>
 
