@@ -8,8 +8,28 @@ import SupplierDetails from "./login and signup pages/SupplierDetails";
 import TaxDetails from "./login and signup pages/TaxDetails";
 import PickupAddress from "./login and signup pages/Pickup address/PickupAddress";
 import BankDetails from "./login and signup pages/BankDetails";
-import Dashboard from "./pages/Dashbaord";
+import Dashboard from "./pages/dashbaord/Dashbaord";
 import Layout from "./layout/layout";
+import Product from "./pages/product/Product";
+import Order from "./pages/order/Order";
+import Payments from "./pages/payments/Payments";
+import PartialAccept from "./pages/partial accept/PartialAccept";
+import SalesSummery from "./pages/sales summery/SalesSummery";
+import UserRole from "./pages/user role/userRole";
+import Configuration from "./pages/configuration/Configuration";
+import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingWindows";
+import AdvanceStorage from "./pages/product/advance storage/AdvanceStorage";
+import ExpiryList from "./pages/product/expiry list/ExpiryList";
+import Return from "./pages/order/return/Return";
+import ShippingSchedule from "./pages/order/shipping schedule/ShippingSchedule";
+import Shipping from "./pages/order/shipping/Shipping";
+import Refund from "./pages/payments/refund/Refund";
+import RoleManagement from "./pages/user role/role management/RoleManagement";
+import IdConfiguration from "./pages/configuration/ID configuration/IdConfiguration";
+import Email from "./pages/configuration/email/Email";
+import Wallet from "./pages/payments/wallet/Wallet";
+import AccountsLedger from "./pages/payments/accounts ledger/AccountsLedger"
+import Offers from "./pages/offers/Offers";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -23,6 +43,28 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    children: [{ path: "/", element: <Dashboard /> }],
+    children: [
+      { path: "/", element: <Dashboard /> },
+      { path: "/product", element: <Product /> },
+      { path: "/product/advertisingwindows", element: <AdvertisingWindows /> },
+      { path: "/product/advancestorage", element: <AdvanceStorage /> },
+      { path: "/product/expirylist", element: <ExpiryList /> },
+      { path: "/order", element: <Order /> },
+      { path: "/order/return", element: <Return /> },
+      { path: "/order/shipping", element: <Shipping /> },
+      { path: "/order/shippingschedule", element: <ShippingSchedule /> },
+      { path: "/offers", element: <Offers/> },
+      { path: "/payments", element: <Payments /> },
+      { path: "/payments/refund", element: <Refund /> },
+      { path: "/payments/wallet", element: <Wallet /> },
+      { path: "/payments/accountledger", element: <AccountsLedger /> },
+      { path: "/partialaccept", element: <PartialAccept /> },
+      { path: "/salessummery", element: <SalesSummery /> },
+      { path: "/userrole", element: <UserRole /> },
+      { path: "/userrole/rolemanagement", element: <RoleManagement /> },
+      { path: "/configuration", element: <Configuration /> },
+      { path: "/configuration/idconfiguration", element: <IdConfiguration /> },
+      { path: "/configuration/email", element: <Email /> },
+    ],
   },
 ]);

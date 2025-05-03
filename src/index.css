@@ -5,3 +5,7 @@
 /* green - #47BA82 */
 /* drak green(for hover) - #3DA372 */
 /* light green - #F6FBF8 */
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Hides scrollbar */
+}

@@ -2,15 +2,18 @@ import { useState } from "react";
 import Searchbar from "../../components/Searchbar";
 import { Locate, MapPinHouse, Plus } from "lucide-react";
 
-const PickupLocationModal = ({ setNewLocationModal,handleUseCurrentLocation }) => {
-  
-
+const PickupLocationModal = ({
+  setNewLocationModal,
+  handleUseCurrentLocation,
+}) => {
   return (
     <div>
       {/* top things */}
-      <h1 className="text-xl font-semibold mt-3 mb-3">Select pickup location</h1>
+      <h1 className="text-xl font-semibold mt-3 mb-3">
+        Select pickup location
+      </h1>
       <div>
-        <Searchbar />
+        <Searchbar placeholder={"Search your Location"} />
       </div>
       <div className="mt-5">
         {/* use my current loc */}
