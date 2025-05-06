@@ -1,31 +1,20 @@
 import { ArrowDownZA, Funnel, Plus, Search } from "lucide-react";
-import Button from "../../components/ButtonWithIcon";
-import DropDown from "../../components/DropDown";
 import { useState } from "react";
-import FilterOrSorting from "../../components/FilterOrSorting";
-import Searchbar from "../../components/Searchbar";
-import Table from "./components/ProductsTable";
-import ProductsTable from "./components/ProductsTable";
 
-const filterOptions = ["today", "yesterday", "end day"];
+import BatchList from "./components/BatchList";
+import FilterOrSorting from "../../../../../components/FilterOrSorting";
 
-const Product = () => {
+const filterOptions = ["today", "monday"];
+
+const CurrentBatches = () => {
   const [value, setValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(null);
 
-  console.log(currentPage);
   return (
-    <div className="p-3 pt-4 w-full">
-      {/* title and add prod btn */}
-      <div className="flex justify-between w-full mb-3">
-        <h1 className="text-xl font-bold">Product List</h1>
-        <div className="w-[135px] h-[40px]">
-          <Button icon={Plus} label={"Add product"} />
-        </div>
-      </div>
+    <div className="w-full ">
       {/* filtering,sortin ,searhcing,pagin.... */}
-      <div className="bg-[#F8F8F8] w-full rounded-lg p-2 h-[60px] flex justify-between">
+      <div className="bg-[#F8F8F8] mt-3 w-full rounded-lg p-2 h-[60px] flex justify-between">
         {/* filter  and sorting*/}
         <div className="flex gap-3">
           {/* filter */}
@@ -85,16 +74,22 @@ const Product = () => {
           </div>
         </div>
       </div>
-      {/* table */}
-      <div className="w-full mt-1">
-        <ProductsTable
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          setMaxPage={setMaxPage}
-        />
+      {/* batches */}
+      <div className="p-3">
+        <h1 className="text-xl font-semibold">Current Batches</h1>
+
+        {/* batch list */}
+        <div className="mt-4">
+          <BatchList
+            maxPage={maxPage}
+            currentPage={currentPage}
+            isCurrentPage={true}
+            setMaxPage={setMaxPage}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default Product;
+export default CurrentBatches;

@@ -1,21 +1,26 @@
 import { Bell, Search, Settings } from "lucide-react";
-import Searchbar from "../components/Searchbar";
 import BreadCrumbs from "./breadcrumbs/BreadCrumbs";
+import { useEffect, useRef } from "react";
 
-const breads = [{ location: "" }];
 
 const Navbar = () => {
+  const scrollIntoViewRef =useRef(null)
+
+  useEffect(()=>{
+    scrollIntoViewRef.current?.scrollIntoView({behaviour:"smooth"})
+  })
   return (
     <div className="w-full flex justify-between items-center h-[50px]">
       {/* breadcrumbs */}
-      <div className="overflow-x-scroll overflow-y-hidden custom-scrollbar">
+      <div className="overflow-x-scroll flex w-[370px] overflow-y-hidden custom-scrollbar">
         <BreadCrumbs/>
+        <div ref={scrollIntoViewRef}/>
       </div>
 
       {/* right hand side things */}
       <div className="flex gap-5 items-center px-4">
         {/* search */}
-        <div className=" w-[235px] h-[42px] relative">
+        <div className="w-[235px] h-[42px] relative">
           <input
             type="text"
             placeholder="Search"
@@ -31,12 +36,12 @@ const Navbar = () => {
         </div>
         {/* notifications */}
         <div className="bg-[#F1F1F1] relative rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center">
-          <div className="h-2 w-2 bg-[#47BA82] absolute top-[8px] right-[6px] rounded-full" />
+          <div className="h-2 w-2 bg-[#47BA82] absolute top-[10px] right-[12px] rounded-full" />
           <Bell className="w-5 h-5" />
         </div>
         {/* nmame and supplier */}
         <div className="flex flex-col items-end cursor-pointer">
-          <h1 className="font-semibold">Pookie🦃🦃🦃</h1>
+          <h1 className="font-semibold truncate max-w-[150px]">Pookie🦃🦃🦃</h1>
           <p className="text-sm -mt-1 text-gray-600">Supplier</p>
         </div>
         {/* dp */}

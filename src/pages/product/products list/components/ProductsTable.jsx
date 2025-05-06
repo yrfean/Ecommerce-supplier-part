@@ -184,6 +184,7 @@ const ProductsTable = ({ currentPage, setCurrentPage, setMaxPage }) => {
         <tbody className="mt-2">
           {currentProducts?.map((p, index) => (
             <tr
+              onClick={() => (location.href = "/product/product-details")}
               key={index}
               className={`text-black text-center cursor-pointer bg-[#F8F8F8] rounded-lg overflow-hidden`}
             >

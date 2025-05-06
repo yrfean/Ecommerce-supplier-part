@@ -78,7 +78,7 @@ const Dashboard = () => {
           <Graph />
         </div>
         {/* products */}
-        <div className="bg-white h-[380px] rounded-lg w-[330px] p-2 overflow-scroll custom-scrollbar">
+        <div className="bg-white h-[373px] rounded-lg w-[330px] p-2 overflow-scroll custom-scrollbar">
           <h1 className="mb-3 text-xl font-semibold">Most selling products</h1>
           {products.map((p) => (
             <div className="gap-3 flex items-center px-2 py-1 cursor-pointer mb-1 rounded-lg bg-[#F8F8F8]">

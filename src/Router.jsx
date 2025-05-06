@@ -10,7 +10,7 @@ import PickupAddress from "./login and signup pages/Pickup address/PickupAddress
 import BankDetails from "./login and signup pages/BankDetails";
 import Dashboard from "./pages/dashbaord/Dashbaord";
 import Layout from "./layout/layout";
-import Product from "./pages/product/Product";
+import Product from "./pages/product/products list/Product";
 import Order from "./pages/order/Order";
 import Payments from "./pages/payments/Payments";
 import PartialAccept from "./pages/partial accept/PartialAccept";
@@ -30,6 +30,8 @@ import Wallet from "./pages/payments/wallet/Wallet";
 import AccountsLedger from "./pages/payments/accounts ledger/AccountsLedger";
 import Offers from "./pages/offers/Offers";
 import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingWindows";
+import ProductDetails from "./pages/product/products list/pages/product details/ProductDetails";
+import AddBatch from "./pages/product/products list/pages/AddBatch.jsx/AddBatch";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -46,6 +48,8 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/product", element: <Product /> },
+      { path: "/product/product-details", element: <ProductDetails /> },
+      {path: "/product/product-details/add-batch",element: <AddBatch />, },
       { path: "/product/advertising-windows", element: <AdvertisingWindows /> },
       { path: "/product/advance-storage", element: <AdvanceStorage /> },
       { path: "/product/expiry-list", element: <ExpiryList /> },

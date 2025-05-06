@@ -17,7 +17,7 @@ const DropDown = ({ setValue,  options, placeholder }) => {
         />
       </div>
       {isDown && (
-        <div className="absolute top-full h-[120px] overflow-x-hidden custom-scrollbar overflow-y-scroll left-0 w-full bg-[#F6FBF8] shadow-md z-10">
+        <div className="absolute top-full h-[120px overflow-x-hidden custom-scrollbar overflow-y-scroll left-0 w-full bg-[#F6FBF8] shadow-md z-10">
           {options.map((opt, index) => (
             <p
               key={index}
