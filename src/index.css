@@ -6,6 +6,29 @@
 /* drak green(for hover) - #3DA372 */
 /* light green - #F6FBF8 */
 
+/* hide scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   display: none; /* Hides scrollbar */
+}
+
+/* coloring scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #47BA82; /* your green color */
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3ea373; /* darker on hover */
 }

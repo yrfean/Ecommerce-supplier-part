@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 const Layout = () => { 
   return (
-    <div className="w-screen h-screen relative p-3">
+    <div className="w-screen h-screen relative p-3 overflow-x-hidden">
       {/* sidebar */}
       <div className="fixed w-[270px] px- pb-6 py- h-full">
         <Sidebar />

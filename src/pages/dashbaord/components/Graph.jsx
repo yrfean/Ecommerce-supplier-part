@@ -25,7 +25,7 @@ const Graph = () => {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
       {
-        label: "Sales Graph",
+        label: "Insight",
         data: [3000, 2000, 4000, 5000, 1000, 3000, 1000],
         borderColor: " #47BA82",
         backgroundColor: "#FFFFFF",
@@ -75,7 +75,7 @@ const Graph = () => {
 
   return (
     <div className="">
-      <h1 className="text-xl font-bold mb-3">Business insight</h1>
+      <h1 className="text-xl font-semibold mb-3">Business insight</h1>
       <Line
         key="Sales chart"
         data={salesData}
