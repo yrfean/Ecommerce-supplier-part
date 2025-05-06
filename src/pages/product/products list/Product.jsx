@@ -19,7 +19,10 @@ const Product = () => {
       {/* title and add prod btn */}
       <div className="flex justify-between w-full mb-3">
         <h1 className="text-xl font-bold">Product List</h1>
-        <div className="w-[135px] h-[40px]">
+        <div
+          onClick={() => (location.href = "product/add-product")}
+          className="w-[135px] h-[40px]"
+        >
           <Button icon={Plus} label={"Add product"} />
         </div>
       </div>

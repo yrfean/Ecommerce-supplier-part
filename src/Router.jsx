@@ -31,7 +31,8 @@ import AccountsLedger from "./pages/payments/accounts ledger/AccountsLedger";
 import Offers from "./pages/offers/Offers";
 import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingWindows";
 import ProductDetails from "./pages/product/products list/pages/product details/ProductDetails";
-import AddBatch from "./pages/product/products list/pages/AddBatch.jsx/AddBatch";
+import AddBatch from "./pages/product/products list/pages/add batch/AddBatch";
+import AddProduct from "./pages/product/products list/pages/add product/AddProduct";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -48,6 +49,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/product", element: <Product /> },
+      { path: "/product/add-product", element: <AddProduct /> },
       { path: "/product/product-details", element: <ProductDetails /> },
       {path: "/product/product-details/add-batch",element: <AddBatch />, },
       { path: "/product/advertising-windows", element: <AdvertisingWindows /> },

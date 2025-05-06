@@ -1,10 +1,9 @@
 
+
 const AddBatch = () => {
   return (
-    <div className="p-3">
-        
-    </div>
-  )
+    <div></div>
+  );
 }
 
 export default AddBatch
