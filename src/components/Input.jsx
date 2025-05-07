@@ -3,7 +3,7 @@ import { Mail, LockKeyhole } from "lucide-react";
 const Input = ({ icon: Icon, placeholder, type, name, formik }) => {
   // const { values, handleChange, handleBlur, errors, touched } = formik;
   return (
-    <div className={`relative mb-3 w-full h-[50px] bg-[#F6FBF8] rounded-lg ${formik?.touched[name]&&formik?.errors[name]?"outline outline-red-500":""}`}>
+    <div className={`relative mb-3 w-full h-[45px] bg-[#F6FBF8] rounded-lg ${formik?.touched[name]&&formik?.errors[name]?"outline outline-red-500":""}`}>
       {Icon ? (
         <Icon className="absolute w-5 h-5 left-[16px] top-[16px] text-gray-600" />
       ) : null}

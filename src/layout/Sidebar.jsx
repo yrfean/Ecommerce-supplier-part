@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
@@ -121,7 +121,7 @@ const Sidebar = () => {
                     }}
                     className="absolute right-[15px] top-[15px]"
                   >
-                    <ArrowDown
+                    <ChevronDown
                       className={`w-4 h-4 text-[#0000009C] transition-all duration-300 ${
                         drop === item.name ? "rotate-180" : ""
                       }`}

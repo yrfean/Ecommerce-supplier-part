@@ -32,7 +32,7 @@ import Offers from "./pages/offers/Offers";
 import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingWindows";
 import ProductDetails from "./pages/product/products list/pages/product details/ProductDetails";
 import AddBatch from "./pages/product/products list/pages/add batch/AddBatch";
-import AddProduct from "./pages/product/products list/pages/add product/AddProduct";
+import AddProduct from "./pages/product/products list/pages/add product/pages/AddProduct";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
