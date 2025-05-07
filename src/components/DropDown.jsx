@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const DropDown = ({ setValue,  options, placeholder }) => {
+const DropDown = ({ setValue,  options, placeholder,bg }) => {
   const [isDown, setIsDown] = useState(false);
   const [chosen, setChosen] = useState(false);
 
   return (
-    <div className="relative  w-full bg-[#F6FBF8] h-[50px] rounded-lg">
+    <div className={`relative  w-full ${bg} h-full rounded-lg `}>
       <div
         onClick={() => setIsDown((prev) => !prev)}
         className="flex items-center w-full justify-between px-4 py-1 h-full cursor-pointer"
@@ -17,7 +17,9 @@ const DropDown = ({ setValue,  options, placeholder }) => {
         />
       </div>
       {isDown && (
-        <div className="absolute top-full h-[120px overflow-x-hidden custom-scrollbar overflow-y-scroll left-0 w-full bg-[#F6FBF8] shadow-md z-10">
+        <div
+          className={`absolute top-full overflow-x-hidden custom-scrollbar overflow-y-scroll left-0 w-full ${bg} shadow-md z-10`}
+        >
           {options.map((opt, index) => (
             <p
               key={index}

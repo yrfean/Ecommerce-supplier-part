@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddProductInput = ({label,placeholder}) => {
   return (
-    <div className='w-full h-[46px]'>
+    <div className='w-full h-[57]px'>
       <p className="font-medium">{label}</p>
       <input
         type="text"

@@ -24,7 +24,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #47BA82; /* your green color */
+  background-color: #47BA82;
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;

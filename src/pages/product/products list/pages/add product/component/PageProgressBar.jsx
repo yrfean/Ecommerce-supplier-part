@@ -15,7 +15,7 @@ const PageProgressBar = ({ pageNumber, setPage }) => {
       {/* round */}
       <div
         onClick={() => {
-          if (pageNumber > 2) setpage(2);
+          if (pageNumber > 2) setPage(2);
         }}
         className={`w-4 h-4 rounded-full border-2 border-white ${
           pageNumber >= 2
