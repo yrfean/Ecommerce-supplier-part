@@ -11,7 +11,7 @@ import BankDetails from "./login and signup pages/BankDetails";
 import Dashboard from "./pages/dashbaord/Dashbaord";
 import Layout from "./layout/layout";
 import Product from "./pages/product/products list/Product";
-import Order from "./pages/order/Order";
+import Order from "./pages/order/order management/Order";
 import Payments from "./pages/payments/Payments";
 import PartialAccept from "./pages/partial accept/PartialAccept";
 import SalesSummery from "./pages/sales summery/SalesSummery";
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
       { path: "/product", element: <Product /> },
       { path: "/product/add-product", element: <AddProduct /> },
       { path: "/product/product-details", element: <ProductDetails /> },
-      {path: "/product/product-details/add-batch",element: <AddBatch />, },
+      { path: "/product/product-details/add-batch", element: <AddBatch /> },
       { path: "/product/advertising-windows", element: <AdvertisingWindows /> },
       { path: "/product/advance-storage", element: <AdvanceStorage /> },
       { path: "/product/expiry-list", element: <ExpiryList /> },

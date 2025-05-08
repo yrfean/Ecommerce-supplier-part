@@ -21,8 +21,9 @@ const AddPd2 = ({ setPage }) => {
       </div>
 
       {/* body div */}
-      <div className="bg-[#F8F8F8] p-3 w-full }
-      h-[345px] rounded-lg overflow-auto custom-scrollba">
+      <div
+        className="bg-[#F8F8F8] p-3 w-full h-[345px] rounded-lg overflow-auto "
+      >
         {/* batchnumber/createddate/quantity(optional) */}
         <div className="flex justify-between ">
           <div className="w-[30%]">
@@ -92,7 +93,10 @@ const AddPd2 = ({ setPage }) => {
         <div className="h-[40px] w-[100px] outline cursor-pointer text-center pt-2 outline-[#47BA82] text-[#47BA82] rounded-lg">
           Cancel
         </div>
-        <div onClick={()=>setPage(3)} className="h-[40px] outline w-[100px] cursor-pointer text-center pt-2 bg-[#47BA82] hover:bg-[#3DA372] transition-all duration-300 text-white rounded-lg">
+        <div
+          onClick={() => setPage(3)}
+          className="h-[40px] outline w-[100px] cursor-pointer text-center pt-2 bg-[#47BA82] hover:bg-[#3DA372] transition-all duration-300 text-white rounded-lg"
+        >
           Next
         </div>
       </div>

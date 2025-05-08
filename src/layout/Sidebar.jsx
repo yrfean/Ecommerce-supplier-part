@@ -38,7 +38,7 @@ const navitems = [
     ],
   },
   {
-    name: "Partical accept",
+    name: "Partial accept",
     location: "/partialaccept",
     icon: "carbon:delivery-parcel",
   },

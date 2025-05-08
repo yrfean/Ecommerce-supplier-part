@@ -12,7 +12,7 @@ import AddPd2 from "./AddPd2";
 import AddPd3 from "./AddPd3";
 
 const AddProduct = () => {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(3);
 
   return (
     <div className="p-3 mt-1">
