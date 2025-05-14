@@ -1,49 +1,147 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Input from "../../../../../../components/Input";
 import { useFormik } from "formik";
 import DropdownInput from "../component/DropdownInput";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "../../../../../../login and signup pages/components/ButtonNoIcon";
 import { List } from "lucide-react";
+import { useGetCategory, useGetGST } from "../../../../../../Query/Muatate";
+import DropDown from "../../../../../../components/DropDown";
 
-const AddPd1 = ({ setPage }) => {
+const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
+  const gstDetails = useGetGST().data;
+  const categoryDetails = useGetCategory().data;
+  const childRef = useRef(null);
   const imageRef = useRef(null);
+  const [subCategoryOptions, setSubCategoryOptions] = useState(null);
+  const [category, setCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
+  const [gst, setGst] = useState("");
+  const [values, setValues] = useState({
+    title: "",
+    category: 2,
+    subcategory: 6,
+    description: "",
+    brand: "",
+    gst: 1,
+  });
 
   const handleImageClick = () => {
     imageRef.current.click();
   };
+
+  useEffect(() => {
+    setSubCategoryOptions(null);
+    const cat = categoryDetails?.data.find((cat) => cat.name === category);
+    // return console.log(cat);
+    const subs = cat?.subcategories;
+    setSubCategoryOptions(subs);
+    childRef.current.callChildFunction();
+  }, [category]);
+
+  useEffect(() => {
+    // Only proceed if categoryDetails is loaded
+    if (!categoryDetails?.data) return;
+
+    // Category setting
+    const categoryItem = categoryDetails.data.find(
+      (cat) => cat.name === category
+    );
+
+    if (categoryItem) {
+      formik.setFieldValue("category", categoryItem.id);
+
+      // Setting subcategory
+      const subCategoryItem = categoryItem.subcategories.find(
+        (sub) => sub.name === subCategory
+      );
+
+      if (subCategoryItem) {
+        formik.setFieldValue("subcategory", subCategoryItem.id);
+      }
+    }
+
+    // gst
+    if (gstDetails?.data) {
+      const gstItem = gstDetails.data.find(
+        (gstData) => gstData.gst_value === gst
+      );
+
+      if (gstItem) {
+        formik.setFieldValue("gst", gstItem.id);
+      }
+    }
+  }, [category, subCategory, gst, categoryDetails, gstDetails]);
+  useEffect(() => {
+    const categoryItem = categoryDetails?.data.find(
+      (cat) => cat.name === category
+    );
+    if (categoryItem?.has_units) {
+      setShowExpiry(true);
+    } else {
+      setShowExpiry(false);
+    }
+  }, [category]);
+
   return (
-    <div className="bg-[#F8F8F8] flex items-center gap-3 w-full h-[436px] rounded-lg">
+    <div className="bg-[#F8F8F8] flex items-center gap-3 w-full h-[476px] rounded-lg">
       {/* details inputs */}
       <div className="p-5 w-[47%]">
         <div>
           <label className="text-md font-semibold mb-1">Product Title</label>
           <input
+            name="title"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
             type="text"
             placeholder="Product Title"
             className="w-full  mb-2 h-[40px] p-2 shadow bg-white outline-none rounded-lg"
           />
         </div>
-        <div className="w-full h-[45px] mb-7">
+        <div>
+          <label className="text-md font-semibold mb-1">Product Category</label>
           <DropdownInput
-            label={"Product Categories"}
-            placeholder={"Porduct Categories"}
+            placeholder={"Choose Category"}
+            options={categoryDetails?.data.map((cat) => cat.name)}
+            setValue={setCategory}
           />
-        </div>
-        <div className="w-full h-[45px] mb-7">
-          <DropdownInput
-            label={"Sub Categories"}
-            placeholder={"Sub Categories"}
-          />
-        </div>
-        <div className="w-full h-[45px] mb-7">
-          <DropdownInput label={"Brand Name"} placeholder={"Brand Name"} />
         </div>
         <div>
-          <label className="text-md font-semibold">Brand</label>
+          <label className="text-md font-semibold mb-1">Sub Category</label>
+          <DropdownInput
+            placeholder={"Choose Category"}
+            options={subCategoryOptions?.map((sub) => sub.name)}
+            setValue={setSubCategory}
+            ref={childRef}
+          />
+        </div>
+        <div className="w-full h-[45px] mb-7">
+          <DropdownInput
+            label={"GST"}
+            placeholder={"Pick GST"}
+            name={"gst"}
+            formik={formik}
+            options={gstDetails?.data.map((cat) => cat.gst_value)}
+            setValue={setGst}
+          />
+        </div>
+        <div className="w-full h-[45px] mb-7">
+          <label className="text-md font-semibold mb-1">Brand Name</label>
+          <input
+            name="brand"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            type="text"
+            placeholder="Brand Name.."
+            className="w-full  mb-2 h-[40px] p-2 shadow bg-white outline-none rounded-lg"
+          />
+        </div>
+        <div>
+          <label className="text-md font-semibold">Description</label>
           <textarea
-            name=""
-            placeholder="Y dont u tell about your brand..."
+            name="description"
+            onChange={formik.handleChange}
+            placeholder="description..."
             className="p-2 w-full outline-none font-normal bg-white rounded-lg shadow"
           ></textarea>
         </div>
@@ -100,12 +198,17 @@ const AddPd1 = ({ setPage }) => {
             className="absolute text-white size-5 left-[130px] top-[6px]"
             icon={"material-symbols:upload"}
           />
-          <button className="w-full  font-semibold bg-[#354A5F] p-1  rounded text-white cursor-pointer">
-            Upload Video{" "}
+          <button className="w-full font-semibold bg-[#354A5F] p-1  rounded text-white cursor-pointer">
+            Upload Video
           </button>
         </div>
 
-        <div onClick={() => setPage(2)} className="mt-3">
+        <div
+          onClick={() => {
+            setPage(2);
+          }}
+          className="mt-11"
+        >
           <Button value={"Next "} />
         </div>
       </div>

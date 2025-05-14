@@ -32,7 +32,9 @@ const ShippingSchedule = () => {
         </div>
       </div>
       {/* calender */}
-      <div className="mt-2 bg-[#F8F8F8] w-full h-[425px] rounded-lg"></div>
+      <div className="mt-2 bg-[#F8F8F8] w-full h-[425px] rounded-lg">
+        
+      </div>
     </div>
   );
 };
