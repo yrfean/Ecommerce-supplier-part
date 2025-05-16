@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddProductInput = ({label,placeholder}) => {
+const AddProductInput = ({label,placeholder,formik}) => {
   return (
     <div className='w-full h-[57]px'>
       <p className="font-medium">{label}</p>

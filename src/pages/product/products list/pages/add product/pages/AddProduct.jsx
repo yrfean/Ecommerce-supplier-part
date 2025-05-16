@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ButtonWithIcon from "../../../../../../components/ButtonWithIcon";
 import { List } from "lucide-react";
 import PageProgressBar from "../component/PageProgressBar";
@@ -11,25 +11,35 @@ import AddPd1 from "./AddPd1";
 import AddPd2 from "./AddPd2";
 import AddPd3 from "./AddPd3";
 import * as yup from "yup";
-import { useAddProduct } from "../../../../../../Query/Muatate";
-
-const validationSchema = yup.object({});
+import { useAddProduct, useGetUnits } from "../../../../../../Query/Muatate";
 
 // const stock_details = [];
 
 const AddProduct = () => {
   const [page, setPage] = useState(1);
-  const AddProduct = useAddProduct();
+  const AddProductMutation = useAddProduct();
   const [showExpiry, setShowExpiry] = useState(true);
+  const [stockDetails, setStockDetails] = useState([]);
+  // const [changedStockDetails, setChangedStockDetails] = useState([]);
+
+  const validationSchema = yup.object({
+    // title: yup.string().required("Title is required"),
+    // category: yup.number().required("Category is required"),
+    // subcategory: yup.number().required("Subcategory is required"),
+    // description: yup.string().required("Description is required"),
+    // brand: yup.string().required("Brand is required"),
+    // gst: yup.number().required("GST is required"),
+  });
 
   const formik = useFormik({
+    // enableReinitialize: true,
     initialValues: {
       title: "",
-      category: 2,
-      subcategory: 6,
+      category: "",
+      subcategory: "",
       description: "",
       brand: "",
-      gst: 1,
+      gst: "",
       units: [
         {
           quantity: "",
@@ -38,24 +48,37 @@ const AddProduct = () => {
           manufacturing_date: "",
           low_stock_alert: "",
           expiry_notification_days: "",
-          stock_details: [
-            {
-              unit_quantity: "",
-              unit: 1,
-              packets: "",
-              mrp: "",
-              selling_price: "",
-            },
-          ],
+          stock_details: [],
         },
       ],
     },
+    validationSchema,
     onSubmit: (data) => {
+      console.log("hdi");
       console.log(data);
-      AddProduct.mutate(data);
+      AddProductMutation.mutate(data);
     },
   });
-
+  const {
+    data: units,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useGetUnits(formik.values.category);
+  // transforming unit value into its id
+  useEffect(() => {
+    const changed = stockDetails.map((stock) => {
+      const unitStock = units.data.find((u) => u.name === stock.unit);
+      return {
+        ...stock,
+        unit: unitStock ? unitStock.id : null,
+      };
+    });
+    if (changed) {
+      formik.setFieldValue("units[0].stock_details", changed); // 👈 manually push it into form
+    }
+  }, [stockDetails]);
   return (
     <div className="p-3 mt-1">
       {/* add product and product list */}
@@ -84,7 +107,14 @@ const AddProduct = () => {
             setShowExpiry={setShowExpiry}
           />
         ) : page === 2 ? (
-          <AddPd2 setPage={setPage} formik={formik} showExpiry={showExpiry} />
+          <AddPd2
+            setPage={setPage}
+            formik={formik}
+            showExpiry={showExpiry}
+            stockDetails={stockDetails}
+            setStockDetails={setStockDetails}
+            units={units}
+          />
         ) : (
           <AddPd3 formik={formik} />
         )}

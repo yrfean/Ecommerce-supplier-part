@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "../../../../../../components/Input";
-import { useFormik } from "formik";
+import { ErrorMessage, useFormik } from "formik";
 import DropdownInput from "../component/DropdownInput";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "../../../../../../login and signup pages/components/ButtonNoIcon";
@@ -17,6 +17,7 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [gst, setGst] = useState("");
+
   const [values, setValues] = useState({
     title: "",
     category: 2,
@@ -88,15 +89,21 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
       {/* details inputs */}
       <div className="p-5 w-[47%]">
         <div>
-          <label className="text-md font-semibold mb-1">Product Title</label>
-          <input
-            name="title"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            type="text"
-            placeholder="Product Title"
-            className="w-full  mb-2 h-[40px] p-2 shadow bg-white outline-none rounded-lg"
-          />
+          <div>
+            <label className="text-md font-semibold mb-1">Product Title</label>
+            <input
+              name="title"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="text"
+              placeholder="Product Title"
+              className={`w-full  mb-2 h-[40px] p-2 shadow bg-white outline-none rounded-lg ${
+                formik.touched.title && formik.errors.title
+                  ? "border-2 border-red-500"
+                  : ""
+              }`}
+            />
+          </div>
         </div>
         <div>
           <label className="text-md font-semibold mb-1">Product Category</label>
@@ -133,7 +140,11 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
             onBlur={formik.handleBlur}
             type="text"
             placeholder="Brand Name.."
-            className="w-full  mb-2 h-[40px] p-2 shadow bg-white outline-none rounded-lg"
+            className={`w-full mb-2 h-[40px] p-2 shadow bg-white outline-none rounded-lg ${
+              formik.touched.brand && formik.errors.brand
+                ? " border-2 border-red-500"
+                : ""
+            }`}
           />
         </div>
         <div>
@@ -142,7 +153,11 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
             name="description"
             onChange={formik.handleChange}
             placeholder="description..."
-            className="p-2 w-full outline-none font-normal bg-white rounded-lg shadow"
+            className={`p-2 w-full outline-none font-normal bg-white rounded-lg shadow ${
+              formik.touched.touched && formik.touched.description
+                ? "border-2 border-red-500"
+                : ""
+            }`}
           ></textarea>
         </div>
       </div>
@@ -205,6 +220,7 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
 
         <div
           onClick={() => {
+            
             setPage(2);
           }}
           className="mt-11"
