@@ -16,7 +16,6 @@ const DropdownInput = ({
     setChose(cat);
     setIsDown(false);
     setValue(cat);
-    
   };
 
   const changeChosen = () => {
@@ -27,12 +26,9 @@ const DropdownInput = ({
   }));
 
   return (
-    <div className="h-full relative">
+    <div className="h-ful  relative">
       <label className="text-md font-semibold">{label}</label>
-      <div
-       
-        className="relative w-full h-full cursor-pointer"
-      >
+      <div className="relative w-full h-full cursor-pointer">
         <input
           type="text"
           placeholder={placeholder}
@@ -40,7 +36,6 @@ const DropdownInput = ({
           className="w-full h-ful p-2 shado bg-white outline-none rounded-lg "
           value={chose || ""}
           disabled
-          
         />
         <ChevronDown
           onClick={() => setIsDown((prev) => !prev)}
@@ -50,16 +45,20 @@ const DropdownInput = ({
         />
       </div>
       {isDown && (
-        <div className="w-full absolute z-100 text-center">
+        <div className="w-full absolute mt-1 z-100 text-center">
           {options ? (
-            options?.map((cat,index) => (
+            options?.map((cat, index) => (
               <div
-              key={index}
+                key={index}
                 onClick={() => {
                   handleChose(cat);
                   // formik.setFieldValue("gst", cat);  lets set it after fetching gst vals
                 }}
-                className="font-semibold p-1 cursor-pointer w-full bg-white hover:bg-[#F8F8F8]"
+                className={`font-semibold p-1 cursor-pointer w-full bg-white hover:bg-[#F8F8F8] ${
+                  options.length - 1 === index
+                    ? "rounded-br-lg rounded-bl-lg"
+                    : ""
+                }`}
               >
                 {cat}{" "}
               </div>

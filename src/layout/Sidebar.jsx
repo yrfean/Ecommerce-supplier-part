@@ -20,11 +20,16 @@ const navitems = [
     name: "Order",
     location: "/order",
     icon: "material-symbols:orders-outline",
-    children: [
-      { name: "Return", location: "/order/return" },
-      { name: "Shipping", location: "/order/shipping" },
-      { name: "Shipping Schedule", location: "/order/shipping-schedule" },
-    ],
+  },
+  {
+    name: "Return Management",
+    location: "/Return-management",
+    icon: "hugeicons:delivery-return-01",
+  },
+  {
+    name: "Shipping Management",
+    location: "/shipping-management",
+    icon: "material-symbols:local-shipping-outline-rounded",
   },
   { name: "Offers", location: "/offers", icon: "ic:outline-local-offer" },
   {
@@ -96,17 +101,17 @@ const Sidebar = () => {
                   navigate(item.location);
                   setDrop(false);
                 }}
-                className={`w-full mb-1 flex transition-all duration-300 text-gray-800 items-center hover:outline-[#A7E6C6] rounded-xl font-semibold gap-6   px-10 h-[43px] relative cursor-pointer ${
+                className={`w-full mb-1 flex transition-all duration-300 text-gray-800 items-center hover:outline-[#A7E6C6] rounded-xl font-semibold gap-2  px-10 h-[43px] relative cursor-pointer ${
                   location === item.location
                     ? "bg-[#47BA82] text-white"
-                    : "outline outline-[#BFECD5]"
+                    : ""
                 }`}
               >
                 {/* icon */}
                 <div className="">
-                  <Icon icon={item.icon} className="w-6 h-6" />
+                  <Icon icon={item.icon} className="w-5 h-5" />
                 </div>
-                <p className="text-nowrap">{item.name} </p>
+                <p className="text-nowrap text-sm">{item.name} </p>
                 {/* drop icon */}
                 {item.children ? (
                   <div

@@ -54,9 +54,9 @@ const AddProduct = () => {
     },
     validationSchema,
     onSubmit: (data) => {
-      console.log("hdi");
       console.log(data);
       AddProductMutation.mutate(data);
+      location.href="/product"
     },
   });
   const {

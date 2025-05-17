@@ -19,9 +19,8 @@ import UserRole from "./pages/user role/userRole";
 import Configuration from "./pages/configuration/Configuration";
 import AdvanceStorage from "./pages/product/advance storage/AdvanceStorage";
 import ExpiryList from "./pages/product/expiry list/ExpiryList";
-import Return from "./pages/order/return/Return";
-import ShippingSchedule from "./pages/order/shipping schedule/ShippingSchedule";
-import Shipping from "./pages/order/shipping/Shipping";
+import Return from "./pages/return management/Return";
+import Shipping from "./pages/shipping management/Shipping";
 import Refund from "./pages/payments/refund/Refund";
 import RoleManagement from "./pages/user role/role management/RoleManagement";
 import IdConfiguration from "./pages/configuration/ID configuration/IdConfiguration";
@@ -56,9 +55,8 @@ export const router = createBrowserRouter([
       { path: "/product/advance-storage", element: <AdvanceStorage /> },
       { path: "/product/expiry-list", element: <ExpiryList /> },
       { path: "/order", element: <Order /> },
-      { path: "/order/return", element: <Return /> },
-      { path: "/order/shipping", element: <Shipping /> },
-      { path: "/order/shipping-schedule", element: <ShippingSchedule /> },
+      { path: "/return-management", element: <Return /> },
+      { path: "/shipping-management", element: <Shipping /> },
       { path: "/offers", element: <Offers /> },
       { path: "/payments", element: <Payments /> },
       { path: "/payments/refund", element: <Refund /> },

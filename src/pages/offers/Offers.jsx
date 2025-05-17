@@ -5,7 +5,7 @@ import Schedule from "./pages/Schedule";
 import Searchbar from "../../components/Searchbar";
 
 const Offers = () => {
-  const [page, setPage] = useState("active");
+  const [page, setPage] = useState("");
 
   return (
     <div className="p-3">
@@ -53,7 +53,7 @@ const Offers = () => {
       {/* body */}
       <div>
         {page === "active" ? (
-          <div>
+          <div className="mt-1">
             <Active />{" "}
           </div>
         ) : page === "history" ? (
@@ -61,7 +61,7 @@ const Offers = () => {
             <History />
           </div>
         ) : (
-          <div>
+          <div className="mt-2">
             <Schedule />{" "}
           </div>
         )}
