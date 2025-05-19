@@ -1,6 +1,10 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useGetBoxDetails } from "../../../Query/Muatate";
+import { useEffect } from "react";
 
 const Boxes = () => {
+  const { data } = useGetBoxDetails();
+
   return (
     <div className="flex justify-around">
       {/* today sales */}
@@ -12,8 +16,10 @@ const Boxes = () => {
           />
         </div>
         <div>
-          <h1 className="text-[#3BC288] text-xl font-semibold">121</h1>
-          <p>Today sales</p>
+          <h1 className="text-[#3BC288] text-xl font-semibold">
+            {data?.data.todays_sales_count}
+          </h1>
+          <p>Today Sales</p>
         </div>
       </div>
       {/*  */}
@@ -25,8 +31,10 @@ const Boxes = () => {
           />
         </div>
         <div>
-          <h1 className="text-[#6DBAF2] text-xl font-semibold">15</h1>
-          <p>Today order</p>
+          <h1 className="text-[#6DBAF2] text-xl font-semibold">
+            {data?.data.todays_orders_count}
+          </h1>
+          <p>Today Orders</p>
         </div>
       </div>
       {/*  */}
@@ -38,7 +46,9 @@ const Boxes = () => {
           />
         </div>
         <div>
-          <h1 className="text-[#FFB4B4] text-xl font-semibold">121</h1>
+          <h1 className="text-[#FFB4B4] text-xl font-semibold">
+            {data?.data.in_stock_count}
+          </h1>
           <p>In stock</p>
         </div>
       </div>
@@ -50,8 +60,10 @@ const Boxes = () => {
           />
         </div>
         <div>
-          <h1 className="text-[#DABDFF] text-xl font-semibold">₹2500</h1>
-          <p>Total payment</p>
+          <h1 className="text-[#DABDFF] text-xl font-semibold">
+            {data?.data.total_payments}
+          </h1>
+          <p>Total payments</p>
         </div>
       </div>
     </div>

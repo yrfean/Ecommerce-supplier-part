@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import Active from "./pages/Active";
 import History from "./pages/History";
-import Schedule from "./pages/Schedule";
+import Schedule from "./pages/schedule/Schedule";
+import Active from "./pages/Active";
+
 import Searchbar from "../../components/Searchbar";
 
 const Offers = () => {
-  const [page, setPage] = useState("");
+  const [page, setPage] = useState("schedule");
 
   return (
     <div className="p-3">
       <h1 className="font-bold text-2xl mb-4">Offers</h1>
 
-      {/* bar */}
+      {/*navbar */}
       <div className="w-full h-[70px] bg-[#F8F8F8] pr-10 rounded-lg flex justify-between items-center">
         <div className="w-2/3 flex items-center ml-6 gap-3 font-semibold">
           <div
@@ -54,7 +55,7 @@ const Offers = () => {
       <div>
         {page === "active" ? (
           <div className="mt-1">
-            <Active />{" "}
+            <Active />
           </div>
         ) : page === "history" ? (
           <div>

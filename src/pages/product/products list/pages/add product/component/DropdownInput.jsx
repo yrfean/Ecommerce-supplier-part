@@ -26,19 +26,22 @@ const DropdownInput = ({
   }));
 
   return (
-    <div className="h-ful  relative">
+    <div className="h-ful h-[40px relative">
       <label className="text-md font-semibold">{label}</label>
-      <div className="relative w-full h-full cursor-pointer">
+      <div
+        onClick={() => setIsDown((prev) => !prev)}
+        className="relative w-full h-full cursor-pointer"
+      >
         <input
           type="text"
           placeholder={placeholder}
           name={name}
-          className="w-full h-ful p-2 shado bg-white outline-none rounded-lg "
+          className="w-full h-ful p-2 shado bg-white outline-none rounded-lg placeholder:text-center text-center"
           value={chose || ""}
           disabled
         />
         <ChevronDown
-          onClick={() => setIsDown((prev) => !prev)}
+          // onClick={() => setIsDown((prev) => !prev)}
           className={`absolute cursor-pointer text-gray-400 top-[10px] right-[20px] transition-all duration-300 ${
             isDown ? "rotate-180" : ""
           }`}

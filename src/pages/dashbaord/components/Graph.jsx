@@ -9,6 +9,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useEffect, useState } from "react";
+import DropDown from "../../../components/DropDown";
+import { useGetBusinnesInsights } from "../../../Query/Muatate";
 
 ChartJS.register(
   LineElement,
@@ -21,19 +24,49 @@ ChartJS.register(
 );
 
 const Graph = () => {
+  const { data } = useGetBusinnesInsights();
+  const [filter, setFilter] = useState("Weekly");
+  const [datas, setDatas] = useState([]);
+
+  const values =
+    filter === "Weekly" && data?.data?.weekly_insights
+      ? Object.values(data.data.weekly_insights)
+      : filter === "Monthly" && data?.data?.monthly_insights
+      ? Object.values(data.data.monthly_insights)
+      : [];
+  const maxYValue = values.length ? Math.max(...values) : 0;
+
+  const dynamicStepSize =
+    maxYValue <= 10
+      ? 2
+      : maxYValue <= 100
+      ? 10
+      : maxYValue <= 1000
+      ? 200
+      : maxYValue <= 10000
+      ? 1000
+      : maxYValue <= 100000
+      ? 10000
+      : 20000;
+
   const salesData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels:
+      filter === "Weekly" && data?.data?.weekly_insights
+        ? Object.keys(data.data.weekly_insights)
+        : filter === "Monthly" && data?.data?.monthly_insights
+        ? Object.keys(data.data.monthly_insights)
+        : [],
     datasets: [
       {
         label: "Insight",
-        data: [3000, 2000, 4000, 5000, 1000, 3000, 1000],
+        data: values,
         borderColor: " #47BA82",
         backgroundColor: "#FFFFFF",
         tension: 0.4,
         fill: true,
         pointRadius: 8,
         pointHoverRadius: 10,
-        pointBackgroundColor:"rgba(100, 200, 150, 0.5)",
+        pointBackgroundColor: "rgba(100, 200, 150, 0.5)",
         pointBorderColor: "#F6FBF8",
       },
     ],
@@ -58,8 +91,9 @@ const Graph = () => {
     scales: {
       y: {
         beginAtZero: true,
+        max: maxYValue < dynamicStepSize ? dynamicStepSize : maxYValue,
         ticks: {
-          stepSize:2000,
+          stepSize: dynamicStepSize,
           callback: function (value) {
             return value / 1000 + "k";
           },
@@ -74,8 +108,16 @@ const Graph = () => {
   };
 
   return (
-    <div className="">
+    <div className="relative">
       <h1 className="text-xl font-semibold mb-3">Business insight</h1>
+      <div className="absolute right-0 top-0">
+        <DropDown
+          options={[["Weekly"], ["Monthly"]]}
+          setValue={setFilter}
+          bg={"bg-[#F4F4F4]"}
+          placeholder={"Filter"}
+        />
+      </div>
       <Line
         key="Sales chart"
         data={salesData}

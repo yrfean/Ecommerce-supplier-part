@@ -1,20 +1,21 @@
 import { Bell, Search, Settings } from "lucide-react";
 import BreadCrumbs from "./breadcrumbs/BreadCrumbs";
 import { useEffect, useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const scrollIntoViewRef =useRef(null)
+  const scrollIntoViewRef = useRef(null);
+  const navigate = useNavigate("/my-profile");
 
-  useEffect(()=>{
-    scrollIntoViewRef.current?.scrollIntoView({behaviour:"smooth"})
-  })
+  useEffect(() => {
+    scrollIntoViewRef.current?.scrollIntoView({ behaviour: "smooth" });
+  });
   return (
     <div className="w-full flex justify-between items-center h-[50px]">
       {/* breadcrumbs */}
       <div className="overflow-x-scroll flex w-[370px] overflow-y-hidden custom-scrollbar">
-        <BreadCrumbs/>
-        <div ref={scrollIntoViewRef}/>
+        <BreadCrumbs />
+        <div ref={scrollIntoViewRef} />
       </div>
 
       {/* right hand side things */}
@@ -39,13 +40,16 @@ const Navbar = () => {
           <div className="h-2 w-2 bg-[#47BA82] absolute top-[10px] right-[12px] rounded-full" />
           <Bell className="w-5 h-5" />
         </div>
-        {/* nmame and supplier */}
-        <div className="flex flex-col items-end cursor-pointer">
+        {/* name and supplier */}
+        <div
+          onClick={() => navigate("/my-profile")}
+          className="flex flex-col items-end cursor-pointer"
+        >
           <h1 className="font-semibold truncate max-w-[150px]">Pookie🦃🦃🦃</h1>
           <p className="text-sm -mt-1 text-gray-600">Supplier</p>
         </div>
         {/* dp */}
-        <div >
+        <div onClick={() => navigate("/my-profile")}>
           <img
             src="/1f97c2b126afc0cc179294ca7e29f74c.jpg"
             alt="user dp"

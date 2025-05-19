@@ -32,6 +32,8 @@ import AdvertisingWindows from "./pages/product/advertising windows/AdvertisingW
 import ProductDetails from "./pages/product/products list/pages/product details/ProductDetails";
 import AddBatch from "./pages/product/products list/pages/add batch/AddBatch";
 import AddProduct from "./pages/product/products list/pages/add product/pages/AddProduct";
+import MyProfile from "./pages/my profile/MyProfile";
+import Mock from "./Mock";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -47,6 +49,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Dashboard /> },
+      { path: "/my-profile", element: <MyProfile /> },
       { path: "/product", element: <Product /> },
       { path: "/product/add-product", element: <AddProduct /> },
       { path: "/product/product-details", element: <ProductDetails /> },
@@ -69,6 +72,7 @@ export const router = createBrowserRouter([
       { path: "/configuration", element: <Configuration /> },
       { path: "/configuration/iD-configuration", element: <IdConfiguration /> },
       { path: "/configuration/email", element: <Email /> },
+      { path: "/mock", element: <Mock /> },
     ],
   },
 ]);

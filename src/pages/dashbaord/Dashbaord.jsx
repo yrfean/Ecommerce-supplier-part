@@ -1,6 +1,8 @@
 import { Star } from "lucide-react";
 import Boxes from "./components/Boxes";
 import Graph from "./components/Graph";
+import { useGetBusinnesInsights, useGetOrderPickup } from "../../Query/Muatate";
+import { useEffect } from "react";
 
 const products = [
   {
@@ -62,6 +64,12 @@ const products = [
 ];
 
 const Dashboard = () => {
+
+  const { data } = useGetOrderPickup();
+  useEffect(() => {
+    if (data) console.log(data);
+  }, [data]);
+
   return (
     <div className="p-3">
       <h1 className="text-xl font-bold">Dashboard</h1>
@@ -79,9 +87,12 @@ const Dashboard = () => {
         </div>
         {/* products */}
         <div className="bg-white h-[373px] rounded-lg w-[330px] p-2 overflow-scroll custom-scrollbar">
-          <h1 className="mb-3 text-xl font-semibold">Most selling products</h1>
-          {products.map((p) => (
-            <div className="gap-3 flex items-center px-2 py-1 cursor-pointer mb-1 rounded-lg bg-[#F8F8F8]">
+          <h1 className="mb-3 text-xl font-semibold">Order Pickup</h1>
+          {products.map((p, index) => (
+            <div
+              key={index}
+              className="gap-3 flex items-center px-2 py-1 cursor-pointer mb-1 rounded-lg bg-[#F8F8F8]"
+            >
               {/* img */}
               <div className="relative">
                 <img
