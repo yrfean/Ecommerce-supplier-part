@@ -7,6 +7,23 @@
 /* light green - #F6FBF8 */
 /* light gray - #F8F8F8 (for bg) */
 
+
+.custom-full-calendar {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.react-calendar__month-view {
+  flex-grow: 1;
+}
+
+.react-calendar__tile {
+  flex-grow: 1;
+  height: 100%;
+}
+
 /* hide scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   display: none; /* Hides scrollbar */

@@ -27,7 +27,7 @@ const DropdownInput = ({
 
   return (
     <div className="h-ful h-[40px relative">
-      <label className="text-md font-semibold">{label}</label>
+      <label className="text-md tracking-wide">{label}</label>
       <div
         onClick={() => setIsDown((prev) => !prev)}
         className="relative w-full h-full cursor-pointer"
@@ -36,7 +36,7 @@ const DropdownInput = ({
           type="text"
           placeholder={placeholder}
           name={name}
-          className="w-full h-ful p-2 shado bg-white outline-none rounded-lg placeholder:text-center text-center"
+          className="w-full h-ful p-2 shado outline outline-gray-300  bg-white rounded-lg placeholder:text-center text-center"
           value={chose || ""}
           disabled
         />

@@ -1,36 +1,46 @@
-import React, { useState } from "react";
-// import DatePicker from "react-datepicker";
+import * as React from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
 
-
 const Mock = () => {
-  const [value, setValue] = useState();
   return (
-    // <LocalizationProvider dateAdapter={AdapterDayjs}>
-    //   <DatePicker
-    //     label="Pick a date"
-    //     value={value}
-    //     onChange={(newValue) => setValue(newValue)}
-    //     renderInput={(params) => <TextField {...params} />}
-    //   />
-    // </LocalizationProvider>
-    <div class="relative w-64 mt-10">
-      <input
-        type="text"
-        id="name"
-        placeholder=" "
-        class="peer w-full px-3 pt-6 pb-2 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+    
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <DatePicker
+        label=""
+        value={""}
+        onChange={(newValue) => setValue(newValue?.toISOString().slice(0, 10))}
+        enableAccessibleFieldDOMStructure={false}
+        slots={{ textField: TextField }}
+        slotProps={{
+          textField: {
+            sx: {
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "#47BA82",
+                },
+              },
+            },
+          },
+          day: {
+            sx: {
+              "&.Mui-selected": {
+                backgroundColor: "#47BA82 !important", // force the color
+                color: "white",
+              },
+              "&.Mui-selected.Mui-focusVisible": {
+                backgroundColor: "#47BA82 !important", // focused selected
+              },
+              "&.Mui-selected:hover": {
+                backgroundColor: "#47BA82 !important", // hover on selected
+              },
+            },
+          },
+        }}
       />
-      <label
-        for="name"
-        class="absolute left-1/2 top-1 text-gray-500 bg-white px-1 text-sm transform -translate-x-1/2 -translate-y-1/2 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-1 peer-focus:text-sm peer-focus:text-blue-500"
-      >
-        Name and address wihr qkewfhjladb
-      </label>
-    </div>
+    </LocalizationProvider>
   );
 };
 

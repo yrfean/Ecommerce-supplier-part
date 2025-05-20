@@ -122,8 +122,8 @@ const Graph = () => {
         key="Sales chart"
         data={salesData}
         options={options}
-        width={550}
-        height={270}
+        width={500}
+        height={320}
       />
     </div>
   );

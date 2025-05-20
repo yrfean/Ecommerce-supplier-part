@@ -34,6 +34,7 @@ import AddBatch from "./pages/product/products list/pages/add batch/AddBatch";
 import AddProduct from "./pages/product/products list/pages/add product/pages/AddProduct";
 import MyProfile from "./pages/my profile/MyProfile";
 import Mock from "./Mock";
+import ShippingSchedule from "./pages/shipping management/Components/ShippingSchedule";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -60,6 +61,7 @@ export const router = createBrowserRouter([
       { path: "/order", element: <Order /> },
       { path: "/return-management", element: <Return /> },
       { path: "/shipping-management", element: <Shipping /> },
+      { path: "/shipping-management/shipping-schedule", element: <ShippingSchedule /> },
       { path: "/offers", element: <Offers /> },
       { path: "/payments", element: <Payments /> },
       { path: "/payments/refund", element: <Refund /> },
