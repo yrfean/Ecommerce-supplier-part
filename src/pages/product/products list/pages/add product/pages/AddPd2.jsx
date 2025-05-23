@@ -7,7 +7,7 @@ import DropdownInput from "../component/DropdownInput";
 import OrdersTable from "../../../../../order/components/OrdersTable";
 import CancelAndNext from "./components/CancelAndNext";
 import AddProductTable from "./components/AddProductTable";
-import { useGetUnits } from "../../../../../../Query/Muatate";
+import { useGetUnits } from "../../../../../../Query/Mutate";
 import { useFormik } from "formik";
 import StockForm from "./components/StockForm";
 
@@ -129,7 +129,6 @@ const AddPd2 = ({
                   formik.handleChange(e);
                   setEdIsEmpty(e.target.value);
                 }}
-                
                 name="units[0].expiry_date"
                 placeholder="00/00/0000"
                 type="date"

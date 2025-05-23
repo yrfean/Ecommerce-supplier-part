@@ -14,7 +14,7 @@ const Payments = () => {
           <div className="rounded-lg w-[180px] h-[70px] bg-[#FFFFFF] flex flex-col justify-center items-center gap-1">
             <p className="font-semibold text-xl">{detail.title} </p>
             <p className="text-[#3BC288] text-xl truncate font-semibold">
-              {detail.no}{" "}
+              {detail.no}
             </p>
           </div>
         ))}

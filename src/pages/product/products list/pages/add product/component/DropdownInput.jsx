@@ -48,7 +48,7 @@ const DropdownInput = ({
         />
       </div>
       {isDown && (
-        <div className="w-full absolute mt-1 z-100 text-center">
+        <div className="w-full absolute mt-1 z-100 text-center shadow">
           {options ? (
             options?.map((cat, index) => (
               <div

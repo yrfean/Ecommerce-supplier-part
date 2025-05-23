@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import DropDown from "../../../components/DropDown";
-import { useGetBusinnesInsights } from "../../../Query/Muatate";
+import { useGetBusinnesInsights } from "../../../Query/Mutate";
 
 ChartJS.register(
   LineElement,
@@ -26,7 +26,6 @@ ChartJS.register(
 const Graph = () => {
   const { data } = useGetBusinnesInsights();
   const [filter, setFilter] = useState("Weekly");
-  const [datas, setDatas] = useState([]);
 
   const values =
     filter === "Weekly" && data?.data?.weekly_insights
@@ -123,7 +122,7 @@ const Graph = () => {
         data={salesData}
         options={options}
         width={500}
-        height={320}
+        height={308}
       />
     </div>
   );

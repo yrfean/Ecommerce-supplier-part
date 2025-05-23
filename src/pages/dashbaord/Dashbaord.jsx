@@ -1,7 +1,7 @@
 import { ChevronDown, Star } from "lucide-react";
 import Boxes from "./components/Boxes";
 import Graph from "./components/Graph";
-import { useGetBusinnesInsights, useGetOrderPickup } from "../../Query/Muatate";
+import { useGetBusinnesInsights, useGetOrderPickup } from "../../Query/Mutate";
 import { useEffect, useState } from "react";
 import React from "react";
 
@@ -77,7 +77,9 @@ const Dashboard = () => {
                   </div>
                   {/* pro detail */}
                   <div className="">
-                    <p className="text-gray-600 font-semibold tracking-wide">#{p.order_id}</p>
+                    <p className="text-gray-600 font-semibold tracking-wide">
+                      #{p.order_id}
+                    </p>
                     <p className="text-gray-400 text-sm">Retailer Phone no:</p>
                     <p className="text-gray-800 font-semibold -mt-[3px]">
                       {" "}

@@ -5,7 +5,7 @@ import DropdownInput from "../component/DropdownInput";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "../../../../../../login and signup pages/components/ButtonNoIcon";
 import { List } from "lucide-react";
-import { useGetCategory, useGetGST } from "../../../../../../Query/Muatate";
+import { useGetCategory, useGetGST } from "../../../../../../Query/Mutate";
 import DropDown from "../../../../../../components/DropDown";
 
 const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
@@ -220,7 +220,6 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
 
         <div
           onClick={() => {
-            
             setPage(2);
           }}
           className="mt-11"

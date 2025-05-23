@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useGetBoxDetails } from "../../../Query/Muatate";
+import { useGetBoxDetails } from "../../../Query/Mutate";
 import { useEffect } from "react";
 
 const Boxes = () => {

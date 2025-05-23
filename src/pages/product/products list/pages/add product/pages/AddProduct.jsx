@@ -11,7 +11,7 @@ import AddPd1 from "./AddPd1";
 import AddPd2 from "./AddPd2";
 import AddPd3 from "./AddPd3";
 import * as yup from "yup";
-import { useAddProduct, useGetUnits } from "../../../../../../Query/Muatate";
+import { useAddProduct, useGetUnits } from "../../../../../../Query/Mutate";
 
 // const stock_details = [];
 
@@ -56,7 +56,7 @@ const AddProduct = () => {
     onSubmit: (data) => {
       console.log(data);
       AddProductMutation.mutate(data);
-      location.href="/product"
+      location.href = "/product";
     },
   });
   const {
