@@ -1,4 +1,4 @@
-const NormalTable = ({ titles, values }) => {
+const NormalTable = ({ titles, values, setValue }) => {
   return (
     <div className="w-full h-full">
       <table className="w-full border-separate table-fixed border-spacing-y-[5.5px]">
@@ -24,11 +24,16 @@ const NormalTable = ({ titles, values }) => {
         <tbody className="mt-2">
           {values?.map((each, index) => (
             <tr
+              onClick={() => setValue(each)}
               key={index}
               className={`text-black text-center cursor-pointer bg-[#F8F8F8] rounded-lg overflow-hidden`}
             >
-              {each?.map((e,index) => {
-                return <td key={index} className="px- py-2">{e}</td>;
+              {each?.map((e, index) => {
+                return (
+                  <td key={index} className="px- py-2">
+                    {e}
+                  </td>
+                );
               })}
             </tr>
           ))}

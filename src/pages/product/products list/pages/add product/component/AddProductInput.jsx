@@ -1,4 +1,3 @@
-import React from 'react'
 
 const AddProductInput = ({label,placeholder,formik}) => {
   return (

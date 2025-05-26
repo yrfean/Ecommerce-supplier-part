@@ -21,7 +21,7 @@ const Navbar = () => {
       {/* right hand side things */}
       <div className="flex gap-5 items-center px-4">
         {/* search */}
-        <div className="w-[235px] h-[42px] relative">
+        {/* <div className="w-[235px] h-[42px] relative">
           <input
             type="text"
             placeholder="Search"
@@ -30,7 +30,7 @@ const Navbar = () => {
           <div className="absolute text-black top-[9px] right-[9px]">
             <Search className="w-6 h-6" />
           </div>
-        </div>
+        </div> */}
         {/* settings */}
         <div className="bg-[#F1F1F1] rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center">
           <Settings className="w-5 h-5" />

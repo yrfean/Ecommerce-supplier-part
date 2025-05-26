@@ -1,12 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import Input from "../../../../../../components/Input";
-import { ErrorMessage, useFormik } from "formik";
 import DropdownInput from "../component/DropdownInput";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "../../../../../../login and signup pages/components/ButtonNoIcon";
-import { List } from "lucide-react";
 import { useGetCategory, useGetGST } from "../../../../../../Query/Mutate";
-import DropDown from "../../../../../../components/DropDown";
 
 const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
   const gstDetails = useGetGST().data;
@@ -34,7 +30,6 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
   useEffect(() => {
     setSubCategoryOptions(null);
     const cat = categoryDetails?.data.find((cat) => cat.name === category);
-    // return console.log(cat);
     const subs = cat?.subcategories;
     setSubCategoryOptions(subs);
     childRef.current.callChildFunction();
@@ -86,6 +81,7 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
 
   return (
     <div className="bg-[#F8F8F8] flex items-center gap-3 w-full h-[476px] rounded-lg">
+      
       {/* details inputs */}
       <div className="p-5 w-[47%]">
         <div>
