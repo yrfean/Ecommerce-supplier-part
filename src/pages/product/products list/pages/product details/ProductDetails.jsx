@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ButtonWithIcon from "../../../../../components/ButtonWithIcon";
-import ProductDetail from "./ProductDetail"
-import CurrentBatches from "./CurrentBatches"
-import BatchHistory from "./BatchHistory"
+import ProductDetail from "./ProductDetail";
+import CurrentBatches from "./CurrentBatches";
+import BatchHistory from "./BatchHistory";
 import { Plus } from "lucide-react";
+import { useGetProduct } from "./../../../../../Query/Mutate";
 
 const ProductDetails = () => {
+  const [, , , id] = location.pathname.split("/");
+  const { data: productDetails } = useGetProduct(id);
   const [page, setPage] = useState("productDetail");
 
+  useEffect(() => {
+    if (productDetails) console.log(productDetails);
+  }, [productDetails]);
   return (
     <div className="">
       {/* NAVBAR */}
@@ -39,7 +45,7 @@ const ProductDetails = () => {
               page === "batchHistory"
                 ? "bg-white px-3 py-2 rounded-lg shadow text-[#47BA82]"
                 : "text-gray-600"
-            }`}  
+            }`}
           >
             Batch history
           </button>

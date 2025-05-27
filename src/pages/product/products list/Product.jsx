@@ -91,7 +91,6 @@ const Product = () => {
       <div className="w-full mt-1">
         <ProductsTable
           currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
           setMaxPage={setMaxPage}
         />
       </div>

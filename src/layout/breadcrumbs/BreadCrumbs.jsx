@@ -9,7 +9,7 @@ const Breadcrumb = () => {
   return (
     <nav className="flex items-center text-2xl space-x-2">
       {/* icon */}
-      <div onClick={()=>navigate("/")} className="mt-1 cursor-pointer">
+      <div onClick={() => navigate("/")} className="mt-1 cursor-pointer">
         <Map />
       </div>
 
@@ -20,6 +20,8 @@ const Breadcrumb = () => {
       ) : null}
 
       {pathnames.map((name, index) => {
+        if (!isNaN(name)) return null;
+
         const routeTo = "/" + pathnames.slice(0, index + 1).join("/");
         const isLast = index === pathnames.length - 1;
 

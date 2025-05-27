@@ -36,7 +36,7 @@ const DropdownInput = ({
           type="text"
           placeholder={placeholder}
           name={name}
-          className="w-full h-ful p-2 shado outline outline-gray-300  bg-white rounded-lg placeholder:text-center text-center"
+          className="w-full h-ful p-2 px-3 shado outline outline-gray-300  bg-white rounded-lg placeholder:text-left  text-center"
           value={chose || ""}
           disabled
         />

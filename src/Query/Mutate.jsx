@@ -106,3 +106,19 @@ export const usePostOffers = () => {
       }),
   });
 };
+
+export const useGetProducts = () => {
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: () => fetcher({ url: `/products-create/?activity_code=1001` }),
+  });
+};
+export const useGetProduct = (id) => {
+  return useQuery({
+    queryKey: ["product", id],
+    queryFn: ({ queryKey }) => {
+      const [, id] = queryKey;
+      fetcher({ url: `/products-create/${id}` });
+    },
+  });
+};

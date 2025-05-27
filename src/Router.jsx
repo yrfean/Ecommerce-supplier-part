@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
       { path: "/my-profile", element: <MyProfile /> },
       { path: "/product", element: <Product /> },
       { path: "/product/add-product", element: <AddProduct /> },
-      { path: "/product/product-details", element: <ProductDetails /> },
+      { path: "/product/product-details/*", element: <ProductDetails /> },
       { path: "/product/product-details/add-batch", element: <AddBatch /> },
       { path: "/product/advertising-windows", element: <AdvertisingWindows /> },
       { path: "/product/advance-storage", element: <AdvanceStorage /> },

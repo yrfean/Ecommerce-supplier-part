@@ -1,9 +1,12 @@
-
+import StorageAdding from "./pages/StorageAdding";
+import StorageList from "./pages/StorageList";
 
 const AdvanceStorage = () => {
   return (
-    <div>AdvanceStorage</div>
-  )
-}
+    <div>
+      <StorageList />
+    </div>
+  );
+};
 
-export default AdvanceStorage
+export default AdvanceStorage;
