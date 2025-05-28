@@ -1,16 +1,14 @@
 import { ArrowDownZA, Funnel, Plus, Search } from "lucide-react";
 import Button from "../../../components/ButtonWithIcon";
-import DropDown from "../../../components/DropDown";
 import { useState } from "react";
 import FilterOrSorting from "../../../components/FilterOrSorting";
-import Searchbar from "../../../components/Searchbar";
-import Table from "./components/ProductsTable";
 import ProductsTable from "./components/ProductsTable";
 
 const filterOptions = ["today", "yesterday", "end day"];
 
 const Product = () => {
   const [value, setValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(null);
 
@@ -31,21 +29,12 @@ const Product = () => {
         {/* filter  and sorting*/}
         <div className="flex gap-3">
           {/* filter */}
-          <div className="w-[140px]">
+          <div className="w-[150px]">
             <FilterOrSorting
               icon={Funnel}
               options={filterOptions}
-              placeholder={"Filter"}
+              placeholder={"Category"}
               setValue={setValue}
-            />
-          </div>
-          {/* sorting */}
-          <div className="w-[140px]">
-            <FilterOrSorting
-              icon={ArrowDownZA}
-              options={filterOptions}
-              setValue={setValue}
-              placeholder={"Sorting"}
             />
           </div>
         </div>
@@ -56,6 +45,8 @@ const Product = () => {
             <input
               type="text"
               name=""
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search product here..."
               className="bg-white rounded-lg h-[45px] font-semibold px-3 pl-8 outline-none"
             />
@@ -90,6 +81,7 @@ const Product = () => {
       {/* table */}
       <div className="w-full mt-1">
         <ProductsTable
+          searchValue={searchValue}
           currentPage={currentPage}
           setMaxPage={setMaxPage}
         />

@@ -11,9 +11,20 @@ const titles = [
   "Barcode",
 ];
 
-const ProductsTable = ({ currentPage, setMaxPage }) => {
+const ProductsTable = ({ currentPage, setMaxPage, searchValue }) => {
   const { data } = useGetProducts();
-  const products = data?.data;
+  const productsFromData = data?.data;
+  const [products, setProducts] = useState(productsFromData);
+  useEffect(() => {
+    const products = productsFromData?.filter((product) => {
+      if (
+        searchValue.includes(product.title) ||
+        searchValue.includes(product.id)
+      )
+        return product;
+    });
+    if (  products) setProducts(products);
+  }, [searchValue]);
   const [currentProducts, setCurrentProducts] = useState();
   const itemsPerpage = 6;
 
@@ -71,7 +82,7 @@ const ProductsTable = ({ currentPage, setMaxPage }) => {
                 key={index}
                 className={`text-black text-center cursor-pointer bg-[#F8F8F8] rounded-lg overflow-hidden`}
               >
-                <td className="px- py-2">{index}</td>
+                <td className="px- py-2">{index + 1}</td>
                 <td className="px-4 py-2">{p.unique_id}</td>
                 <td className="px-4 py-2 max-h-30 overflow-hidden">
                   <div className="line-clamp-1">{p.title}</div>

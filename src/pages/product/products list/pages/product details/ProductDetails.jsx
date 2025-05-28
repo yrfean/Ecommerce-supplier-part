@@ -4,16 +4,12 @@ import ProductDetail from "./ProductDetail";
 import CurrentBatches from "./CurrentBatches";
 import BatchHistory from "./BatchHistory";
 import { Plus } from "lucide-react";
-import { useGetProduct } from "./../../../../../Query/Mutate";
 
 const ProductDetails = () => {
   const [, , , id] = location.pathname.split("/");
-  const { data: productDetails } = useGetProduct(id);
+
   const [page, setPage] = useState("productDetail");
 
-  useEffect(() => {
-    if (productDetails) console.log(productDetails);
-  }, [productDetails]);
   return (
     <div className="">
       {/* NAVBAR */}
@@ -50,27 +46,21 @@ const ProductDetails = () => {
             Batch history
           </button>
         </div>
-        <div
-          onClick={() => (location.href = "/product/product-details/add-batch")}
-          className="h-[37px]"
-        >
-          <ButtonWithIcon icon={Plus} label={"Add batch"} />
-        </div>
       </div>
 
       {/* pages */}
       <div>
         {page === "productDetail" ? (
           <div>
-            <ProductDetail />
+            <ProductDetail id={id} />
           </div>
         ) : page === "currentBatch" ? (
           <div>
-            <CurrentBatches />
+            <CurrentBatches id={id} />
           </div>
         ) : (
           <div>
-            <BatchHistory />
+            <BatchHistory id={id} />
           </div>
         )}
       </div>

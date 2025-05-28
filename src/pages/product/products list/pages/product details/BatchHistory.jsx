@@ -2,52 +2,34 @@ import { ArrowDownZA, Funnel, Search } from "lucide-react";
 import React, { useState } from "react";
 import BatchList from "./components/BatchList";
 import FilterOrSorting from "../../../../../components/FilterOrSorting";
+import { useGetBatchHistory } from "../../../../../Query/Mutate";
 
 const filterOptions = ["someday"];
 
-const BatchHistory = () => {
+const BatchHistory = ({ id }) => {
+  const { data } = useGetBatchHistory(id);
+  const batchesDetail = data?.data;
   const [value, setValue] = useState("");
   const [maxPage, setMaxPage] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <div>
-      <div className="bg-[#F8F8F8] mt-3 w-full rounded-lg p-2 h-[60px] flex items-center justify-between">
-        {/* filter  and sorting*/}
-        <div className="flex gap-3">
-          {/* filter */}
-          <div className="w-[140px]">
-            <FilterOrSorting
-              icon={Funnel}
-              options={filterOptions}
-              placeholder={"Filter"}
-              setValue={setValue}
-            />
-          </div>
-          {/* sorting */}
-          <div className="w-[140px]">
-            <FilterOrSorting
-              icon={ArrowDownZA}
-              options={filterOptions}
-              setValue={setValue}
-              placeholder={"Sorting"}
-            />
-          </div>
-        </div>
+      <div className="bg-[#F8F8F8] mt-3 w-full rounded-lg p-2 h-[60px] flex justify-between">
         {/* seaching,pagin */}
-        <div className="flex gap-3">
+        <div className="flex justify-between gap-3 w-full">
           {/* search */}
-          <div className="relative">
+          <div className="relative w-[300px]">
             <input
               type="text"
               name=""
-              placeholder="Search product here..."
-              className="bg-white rounded-lg h-[45px] font-semibold px-3 pl-8 outline-none"
+              placeholder="Search batch here..."
+              className="bg-white rounded-lg h-[45px] w-full font-semibold px-3 pl-8 outline-none"
             />
             <Search className="absolute w-5 h-5 text-gray-500 top-[12px] left-[8px]" />
           </div>
           {/* pagination buttons */}
-          <div className="space-x-2 ">
+          <div className="space-x-2">
             <button
               onClick={() => {
                 if (currentPage >= 2) {
@@ -77,6 +59,7 @@ const BatchHistory = () => {
 
         <div className="mt-4">
           <BatchList
+            batchesDetail={batchesDetail}
             maxPage={maxPage}
             currentPage={currentPage}
             isCurrentPage={false}

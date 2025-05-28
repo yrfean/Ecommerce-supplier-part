@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const FilterOrSorting = ({ setValue, icon: Icon, options, placeholder }) => {
   const [isDown, setIsDown] = useState(false);
   const [chosen, setChosen] = useState(false);
+  const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // If click is NOT inside dropdown
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDown(false);
+      }
+    }
+
+    // Listen for all clicks on the page
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup when component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
-    <div className="relative flex items-center px- w-full bg-white h-[45px] rounded-lg">
+    <div
+      ref={dropdownRef}
+      className="relative flex items-center px- w-full bg-white h-[45px] rounded-lg"
+    >
       {Icon ? <Icon className="min-w-5 min-h-5 ml-2" /> : null}
       <div
         onClick={() => setIsDown((prev) => !prev)}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const DropDown = ({ setValue,  options, placeholder,bg }) => {
+const DropDown = ({ setValue, options, placeholder, bg }) => {
   const [isDown, setIsDown] = useState(false);
   const [chosen, setChosen] = useState(false);
 
@@ -20,8 +20,9 @@ const DropDown = ({ setValue,  options, placeholder,bg }) => {
         <div
           className={`absolute top-full overflow-x-hidden custom-scrollbar overflow-y-scroll left-0 w-full ${bg} shadow-md z-10`}
         >
-          {options.map((opt, index) => (
-            <p
+          {options.map((opt, index) => {
+            if(opt===chosen)return
+            return<p
               key={index}
               onClick={() => {
                 setChosen(opt);
@@ -32,8 +33,8 @@ const DropDown = ({ setValue,  options, placeholder,bg }) => {
               className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-100"
             >
               {opt}
-            </p>
-          ))}
+            </p>;
+          })}
         </div>
       )}
     </div>

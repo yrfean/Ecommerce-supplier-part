@@ -27,22 +27,35 @@ const Graph = () => {
   const { data } = useGetBusinnesInsights();
   const [filter, setFilter] = useState("Weekly");
 
+  useEffect(() => {
+    if (data) console.log(data);
+  }, [data]);
+
+  // Access the nested data object correctly
+  const insightsData = data?.data || data;
+
   const values =
-    filter === "Weekly" && data?.data?.weekly_insights
-      ? Object.values(data.data.weekly_insights)
-      : filter === "Monthly" && data?.data?.monthly_insights
-      ? Object.values(data.data.monthly_insights)
+    filter === "Weekly" && insightsData?.weekly_insights
+      ? Object.values(insightsData.weekly_insights)
+      : filter === "Monthly" && insightsData?.monthly_insights
+      ? Object.values(insightsData.monthly_insights)
       : [];
+
   const maxYValue = values.length ? Math.max(...values) : 0;
 
+  // Fixed dynamic step size calculation
   const dynamicStepSize =
     maxYValue <= 10
-      ? 2
-      : maxYValue <= 100
+      ? 1
+      : maxYValue <= 50
+      ? 5
+      : maxYValue <= 200
       ? 10
       : maxYValue <= 1000
-      ? 200
+      ? 100
       : maxYValue <= 10000
+      ? 500
+      : maxYValue <= 50000 // Fixed this condition
       ? 1000
       : maxYValue <= 100000
       ? 10000
@@ -50,16 +63,16 @@ const Graph = () => {
 
   const salesData = {
     labels:
-      filter === "Weekly" && data?.data?.weekly_insights
-        ? Object.keys(data.data.weekly_insights)
-        : filter === "Monthly" && data?.data?.monthly_insights
-        ? Object.keys(data.data.monthly_insights)
+      filter === "Weekly" && insightsData?.weekly_insights
+        ? Object.keys(insightsData.weekly_insights)
+        : filter === "Monthly" && insightsData?.monthly_insights
+        ? Object.keys(insightsData.monthly_insights)
         : [],
     datasets: [
       {
         label: "Insight",
         data: values,
-        borderColor: " #47BA82",
+        borderColor: "#47BA82",
         backgroundColor: "#FFFFFF",
         tension: 0.4,
         fill: true,
@@ -72,7 +85,8 @@ const Graph = () => {
   };
 
   const options = {
-    responsive: false,
+    responsive: true, // Changed to true for better responsiveness
+    maintainAspectRatio: false, // Added this for better control
     plugins: {
       legend: {
         display: false,
@@ -90,11 +104,22 @@ const Graph = () => {
     scales: {
       y: {
         beginAtZero: true,
-        max: maxYValue < dynamicStepSize ? dynamicStepSize : maxYValue,
+        max:
+          maxYValue < dynamicStepSize
+            ? dynamicStepSize
+            : Math.ceil(maxYValue * 1.1), // Added some padding
+        grid: {
+          drawBorder: false,
+          color: "#E5E7EB",
+          lineWidth: 1,
+        },
         ticks: {
           stepSize: dynamicStepSize,
+          color: "#6B7280",
+          padding: 10,
           callback: function (value) {
-            return value / 1000 + "k";
+            // Only format as 'k' if value is >= 1000
+            return value >= 1000 ? value / 1000 + "k" : value;
           },
         },
       },
@@ -102,28 +127,33 @@ const Graph = () => {
         grid: {
           display: false,
         },
+        ticks: {
+          color: "#6B7280",
+          padding: 10,
+        },
       },
     },
   };
+
+  // Add loading and error states
+  if (!data) {
+    return <div className="w-[500px] h-[308px]">Loading...</div>;
+  }
 
   return (
     <div className="relative">
       <h1 className="text-xl font-semibold mb-3">Business insight</h1>
       <div className="absolute right-0 top-0">
         <DropDown
-          options={[["Weekly"], ["Monthly"]]}
+          options={["Weekly", "Monthly"]}
           setValue={setFilter}
           bg={"bg-[#F4F4F4]"}
           placeholder={"Filter"}
         />
       </div>
-      <Line
-        key="Sales chart"
-        data={salesData}
-        options={options}
-        width={500}
-        height={308}
-      />
+      <div style={{ width: "500px", height: "308px" }}>
+        <Line key={filter} data={salesData} options={options} />
+      </div>
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import { ArrowDownZA, Funnel, Plus, Search } from "lucide-react";
 import { useState } from "react";
-
 import BatchList from "./components/BatchList";
 import FilterOrSorting from "../../../../../components/FilterOrSorting";
+import { useGetCurrentBatches } from "../../../../../Query/Mutate";
 
 const filterOptions = ["today", "monday"];
 
-const CurrentBatches = () => {
+const CurrentBatches = ({ id }) => {
+  const { data } = useGetCurrentBatches(id);
+  const batchesDetail = data?.data;
   const [value, setValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(null);
@@ -15,36 +17,15 @@ const CurrentBatches = () => {
     <div className="w-full ">
       {/* filtering,sortin ,searhcing,pagin.... */}
       <div className="bg-[#F8F8F8] mt-3 w-full rounded-lg p-2 h-[60px] flex justify-between">
-        {/* filter  and sorting*/}
-        <div className="flex gap-3">
-          {/* filter */}
-          <div className="w-[140px]">
-            <FilterOrSorting
-              icon={Funnel}
-              options={filterOptions}
-              placeholder={"Filter"}
-              setValue={setValue}
-            />
-          </div>
-          {/* sorting */}
-          <div className="w-[140px]">
-            <FilterOrSorting
-              icon={ArrowDownZA}
-              options={filterOptions}
-              setValue={setValue}
-              placeholder={"Sorting"}
-            />
-          </div>
-        </div>
         {/* seaching,pagin */}
-        <div className="flex gap-3">
+        <div className="flex justify-between gap-3 w-full">
           {/* search */}
-          <div className="relative">
+          <div className="relative w-[300px]">
             <input
               type="text"
               name=""
-              placeholder="Search product here..."
-              className="bg-white rounded-lg h-[45px] font-semibold px-3 pl-8 outline-none"
+              placeholder="Search batch here..."
+              className="bg-white rounded-lg h-[45px] w-full font-semibold px-3 pl-8 outline-none"
             />
             <Search className="absolute w-5 h-5 text-gray-500 top-[12px] left-[8px]" />
           </div>
@@ -81,6 +62,7 @@ const CurrentBatches = () => {
         {/* batch list */}
         <div className="mt-4">
           <BatchList
+            batchesDetail={batchesDetail}
             maxPage={maxPage}
             currentPage={currentPage}
             isCurrentPage={true}

@@ -1,136 +1,30 @@
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const batchesDetail = [
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-  {
-    batchNo: 90294,
-    batchCreatedDate: new Date(2004, 1, 2),
-    expiryDate: new Date(2008, 3, 2),
-    manufactureDate: new Date(3004, 5, 1),
-    quantity: [
-      {
-        totalQuantity: 20,
-        twohundredGOrS: 10,
-        fivehundredGOrM: 10,
-        oneKgOrL: 12,
-      },
-    ],
-  },
-];
-
-const BatchList = ({ currentPage, isCurrentPage, setMaxPage }) => {
+const BatchList = ({
+  currentPage,
+  isCurrentPage,
+  setMaxPage,
+  batchesDetail,
+}) => {
   const [showQuantity, setShowQuantity] = useState(false);
   const [batches, setBatches] = useState();
 
   const batchPerPage = 5;
-  const maxPages = Math.ceil(batchesDetail.length / batchPerPage);
-  setMaxPage(maxPages);
+  useEffect(() => {
+    if (batchesDetail) {
+      const maxPages = Math.ceil(batchesDetail.length / batchPerPage);
+      setMaxPage(maxPages);
+    }
+  }, [batchesDetail]);
 
   useEffect(() => {
     const startIndex = (currentPage - 1) * batchPerPage;
     const endIndex = startIndex + batchPerPage;
 
-    const batches = batchesDetail.slice(startIndex, endIndex);
+    const batches = batchesDetail?.slice(startIndex, endIndex);
     setBatches(batches);
-  }, [currentPage]);
+  }, [currentPage, batchesDetail]);
 
   return (
     <div className="h-[370px] overflow-auto custom-scrollbar">
@@ -143,18 +37,17 @@ const BatchList = ({ currentPage, isCurrentPage, setMaxPage }) => {
         >
           <div className="w-full h-[45px] flex items-center justify-around ">
             <p>
-              Batch No: <span>{batch.batchNo}</span>
+              Batch No: <span>{batch.batch_number}</span>
             </p>
             <p>
               Batch Created Date:{" "}
-              <span>{batch.batchCreatedDate.toLocaleDateString()}</span>
+              <span>{new Date(batch.created_at).toLocaleDateString()}</span>
             </p>
             <p>
-              Expiry Date: <span>{batch.expiryDate.toLocaleDateString()}</span>
+              Expiry Date: <span>{batch.expiry_date}</span>
             </p>
             <p>
-              Manufacturer Date:{" "}
-              <span>{batch.manufactureDate.toLocaleDateString()}</span>
+              Manufacturer Date: <span>{batch.manufacturing_date}</span>
             </p>
             <div
               onClick={() => {
@@ -180,19 +73,18 @@ const BatchList = ({ currentPage, isCurrentPage, setMaxPage }) => {
               key={index + 1}
               className=" bg-white mx-14 px-3 py-2 rounded-lg shadow-xs"
             >
-              <div className="flex items-center justify-around">
+              <div className="flex items-center justify-around w-full overflow-x-hidden">
                 <p>
-                  Total quantity: <span>{batch.quantity[0].totalQuantity}</span>
+                  Total quantity: <span>{batch.quantity}</span>
                 </p>
-                <p>
-                  200 G or S: <span>{batch.quantity[0].twohundredGOrS}</span>
-                </p>
-                <p>
-                  500 G or M: <span>{batch.quantity[0].fivehundredGOrM}</span>
-                </p>
-                <p>
-                  1 KG or L: <span>{batch.quantity[0].oneKgOrL}</span>
-                </p>
+                {batch.stock_details.map((stock) => (
+                  <p>
+                    <span>
+                      {stock.unit_quantity} {stock.unit_name}{" "}
+                    </span>
+                    : <span>{stock.packets}</span>
+                  </p>
+                ))}
               </div>
             </div>
           ) : null}
