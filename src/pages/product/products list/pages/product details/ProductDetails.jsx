@@ -16,7 +16,7 @@ const ProductDetails = () => {
       <div className="bg-[#F8F8F8] px-4 mt-5 w-full rounded-lg p-2 h-[60px] items-center flex justify-between">
         <div className="space-x-8">
           <button
-            onClick={() => setPage("productDetail")}
+            onClick={(e) => setPage("productDetail")}
             className={`font-semibold  cursor-pointer transition-all duration-300 ${
               page === "productDetail"
                 ? "bg-white px-3 py-2 rounded-lg shadow text-[#47BA82]"

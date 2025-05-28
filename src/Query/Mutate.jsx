@@ -135,6 +135,22 @@ export const useGetProduct = (id) => {
     refetchOnWindowFocus: false,
   });
 };
+
+export const useGetProductsByCategory = (supplierId) => {
+  return useQuery({
+    queryKey: ["products by category", supplierId],
+    queryFn: ({ queryKey }) => {
+      const [, id] = queryKey;
+      return fetcher({
+        url: `suppliers/102/categories/?activity_code=1001`,
+        //change 102 into actaul supplier id after login and sugnup api integration
+      });
+    },
+    enabled: !!id,
+    refetchOnWindowFocus: false,
+  });
+};
+
 export const useGetCurrentBatches = (id) => {
   return useQuery({
     queryKey: ["current batches", id],

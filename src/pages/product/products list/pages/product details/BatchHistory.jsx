@@ -1,7 +1,7 @@
 import { ArrowDownZA, Funnel, Search } from "lucide-react";
 import React, { useState } from "react";
 import BatchList from "./components/BatchList";
-import FilterOrSorting from "../../../../../components/FilterOrSorting";
+
 import { useGetBatchHistory } from "../../../../../Query/Mutate";
 
 const filterOptions = ["someday"];
@@ -10,6 +10,7 @@ const BatchHistory = ({ id }) => {
   const { data } = useGetBatchHistory(id);
   const batchesDetail = data?.data;
   const [value, setValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [maxPage, setMaxPage] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,6 +24,8 @@ const BatchHistory = ({ id }) => {
             <input
               type="text"
               name=""
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search batch here..."
               className="bg-white rounded-lg h-[45px] w-full font-semibold px-3 pl-8 outline-none"
             />
@@ -59,9 +62,11 @@ const BatchHistory = ({ id }) => {
 
         <div className="mt-4">
           <BatchList
+            searchValue={searchValue}
             batchesDetail={batchesDetail}
             maxPage={maxPage}
             currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
             isCurrentPage={false}
             setMaxPage={setMaxPage}
           />

@@ -44,20 +44,20 @@ const navitems = [
   },
   {
     name: "Partial accept",
-    location: "/partialaccept",
+    location: "/partial-accept",
     icon: "carbon:delivery-parcel",
   },
   {
     name: "Sales summery",
-    location: "/salessummery",
+    location: "/sales-summery",
     icon: "icon-park-outline:sales-report",
   },
   {
     name: "User role",
-    location: "/userrole",
+    location: "/user-role",
     icon: "grommet-icons:user-new",
     children: [
-      { name: "Role managemenet", location: "/userrole/role-management" },
+      { name: "Role managemenet", location: "/user-role/role-management" },
     ],
   },
   {

@@ -10,6 +10,7 @@ const CurrentBatches = ({ id }) => {
   const { data } = useGetCurrentBatches(id);
   const batchesDetail = data?.data;
   const [value, setValue] = useState("");
+  const [searchValue, setSeachValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(null);
 
@@ -24,6 +25,8 @@ const CurrentBatches = ({ id }) => {
             <input
               type="text"
               name=""
+              value={searchValue}
+              onChange={(e) => setSeachValue(e.target.value)}
               placeholder="Search batch here..."
               className="bg-white rounded-lg h-[45px] w-full font-semibold px-3 pl-8 outline-none"
             />
@@ -62,6 +65,8 @@ const CurrentBatches = ({ id }) => {
         {/* batch list */}
         <div className="mt-4">
           <BatchList
+            searchValue={searchValue}
+            setCurrentPage={setCurrentPage}
             batchesDetail={batchesDetail}
             maxPage={maxPage}
             currentPage={currentPage}

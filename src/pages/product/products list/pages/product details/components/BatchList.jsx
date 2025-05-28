@@ -2,6 +2,8 @@ import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const BatchList = ({
+  setCurrentPage,
+  searchValue,
   currentPage,
   isCurrentPage,
   setMaxPage,
@@ -9,22 +11,36 @@ const BatchList = ({
 }) => {
   const [showQuantity, setShowQuantity] = useState(false);
   const [batches, setBatches] = useState();
-
+  const [filteredBatches, setFilteredbatches] = useState();
   const batchPerPage = 5;
+
   useEffect(() => {
-    if (batchesDetail) {
-      const maxPages = Math.ceil(batchesDetail.length / batchPerPage);
+    
+    const filtered = batchesDetail?.filter((batch) =>
+      batch?.batch_number
+        ?.toString()
+        .toLowerCase()
+        .includes(searchValue?.toLowerCase())
+    );
+    setFilteredbatches(filtered);
+    console.log(filtered);
+    setCurrentPage(1);
+  }, [batchesDetail, searchValue]);
+
+  useEffect(() => {
+    if (filteredBatches) {
+      const maxPages = Math.ceil(filteredBatches?.length / batchPerPage);
       setMaxPage(maxPages);
     }
-  }, [batchesDetail]);
+  }, [filteredBatches]);
 
   useEffect(() => {
     const startIndex = (currentPage - 1) * batchPerPage;
     const endIndex = startIndex + batchPerPage;
 
-    const batches = batchesDetail?.slice(startIndex, endIndex);
+    const batches = filteredBatches?.slice(startIndex, endIndex);
     setBatches(batches);
-  }, [currentPage, batchesDetail]);
+  }, [currentPage, filteredBatches]);
 
   return (
     <div className="h-[370px] overflow-auto custom-scrollbar">

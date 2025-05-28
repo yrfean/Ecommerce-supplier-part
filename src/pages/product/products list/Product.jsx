@@ -24,7 +24,7 @@ const Product = () => {
           <Button icon={Plus} label={"Add product"} />
         </div>
       </div>
-      {/* filtering,sortin ,searhcing,pagin.... */}
+      {/* filtering ,searhcing,pagin.... */}
       <div className="bg-[#F8F8F8] w-full rounded-lg p-2 h-[60px] flex justify-between">
         {/* filter  and sorting*/}
         <div className="flex gap-3">
@@ -81,6 +81,7 @@ const Product = () => {
       {/* table */}
       <div className="w-full mt-1">
         <ProductsTable
+        setCurrentPage={setCurrentPage}
           searchValue={searchValue}
           currentPage={currentPage}
           setMaxPage={setMaxPage}

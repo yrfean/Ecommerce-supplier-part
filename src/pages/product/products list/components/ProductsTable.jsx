@@ -11,43 +11,55 @@ const titles = [
   "Barcode",
 ];
 
-const ProductsTable = ({ currentPage, setMaxPage, searchValue }) => {
+const ProductsTable = ({
+  currentPage,
+  setCurrentPage,
+  setMaxPage,
+  searchValue,
+}) => {
   const { data } = useGetProducts();
-  const productsFromData = data?.data;
-  const [products, setProducts] = useState(productsFromData);
-  useEffect(() => {
-    const products = productsFromData?.filter((product) => {
-      if (
-        searchValue.includes(product.title) ||
-        searchValue.includes(product.id)
-      )
-        return product;
-    });
-    if (  products) setProducts(products);
-  }, [searchValue]);
-  const [currentProducts, setCurrentProducts] = useState();
-  const itemsPerpage = 6;
+  const productsFromData = data?.data || [];
 
+  const [products, setProducts] = useState([]);
+  const [currentProducts, setCurrentProducts] = useState([]);
+
+  const itemsPerPage = 6;
+
+  // 🔍 Filter products on search or when data changes
+  useEffect(() => {
+    const filtered = productsFromData.filter((product) => {
+      return (
+        product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+        product.id.toString().includes(searchValue)
+      );
+    });
+    setProducts(filtered);
+    setCurrentPage(1);
+  }, [searchValue, productsFromData]);
+
+  // 📦 Update total pages when filtered products change
   useEffect(() => {
     if (Array.isArray(products)) {
-      const totalPages = Math.ceil(products?.length / itemsPerpage);
+      const totalPages = Math.ceil(products.length / itemsPerPage);
       setMaxPage(totalPages);
     }
   }, [products]);
 
+  // 📃 Slice current products when page or filtered list changes
   useEffect(() => {
-    if (Array.isArray) {
-      const startIndex = (currentPage - 1) * itemsPerpage;
-      const endIndex = startIndex + itemsPerpage;
-      const currentProducts = products?.slice(startIndex, endIndex);
-
-      setCurrentProducts(currentProducts);
+    if (Array.isArray(products)) {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const sliced = products.slice(startIndex, endIndex);
+      setCurrentProducts(sliced);
     }
   }, [currentPage, products]);
 
+  // 🐞 Debug
   useEffect(() => {
     if (products) console.log("products:", products);
   });
+
   return (
     <div className="p-2 h-[447px] overflow-y-hidden">
       <table className="w-full border-separate table-fixed border-spacing-y-[5.5px]">
