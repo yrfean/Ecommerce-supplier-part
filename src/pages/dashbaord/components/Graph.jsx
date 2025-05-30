@@ -135,7 +135,7 @@ const Graph = () => {
     },
   };
 
-  // Add loading and error states
+ 
   if (!data) {
     return <div className="w-[500px] h-[308px]">Loading...</div>;
   }

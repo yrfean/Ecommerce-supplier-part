@@ -1,16 +1,63 @@
 import { ArrowDownZA, Funnel, Plus, Search } from "lucide-react";
 import Button from "../../../components/ButtonWithIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterOrSorting from "../../../components/FilterOrSorting";
 import ProductsTable from "./components/ProductsTable";
-
-const filterOptions = ["today", "yesterday", "end day"];
+import {
+  useGetProductCategoriesForDropDown,
+  useGetProducts,
+  useGetProductsByCategory,
+} from "../../../Query/Mutate";
 
 const Product = () => {
+  const [categoryId, setCategoryId] = useState(null);
+  // first we will request using this to get all
+  const { data } = useGetProducts();
+  const { data: filtered, error } = useGetProductsByCategory(categoryId);
+
   const [value, setValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(null);
+  const [filterOptions, setFilterOptions] = useState([]);
+  const [productsFromData, setProductsFromData] = useState([]);
+
+  const { data: category } = useGetProductCategoriesForDropDown(102);
+
+  useEffect(() => {
+    if (filtered?.data) {
+      setProductsFromData(filtered.data);
+    } else if (error) {
+      console.log(error)
+      alert("backend didnt make it an empty array");
+    }
+  }, [filtered, error]);
+  useEffect(() => {
+    if (data?.data) {
+      setProductsFromData(data.data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (categoryId === null || categoryId === "All") {
+      setProductsFromData(data?.data || []);
+    }
+  }, [data, categoryId]);
+
+  useEffect(() => {
+    const names = category?.data?.map((cat) => cat.name) || [];
+    const filterOptions = ["All", ...names];
+    setFilterOptions(filterOptions);
+  }, [category]);
+
+  useEffect(() => {
+    if (value === "All") {
+      setCategoryId("All");
+    } else {
+      const id = category?.data?.find((cat) => cat.name === value)?.id;
+      setCategoryId(id);
+    }
+  }, [value, category]);
 
   return (
     <div className="p-3 pt-4 w-full">
@@ -29,7 +76,7 @@ const Product = () => {
         {/* filter  and sorting*/}
         <div className="flex gap-3">
           {/* filter */}
-          <div className="w-[150px]">
+          <div className="min-w-[140px]">
             <FilterOrSorting
               icon={Funnel}
               options={filterOptions}
@@ -81,7 +128,8 @@ const Product = () => {
       {/* table */}
       <div className="w-full mt-1">
         <ProductsTable
-        setCurrentPage={setCurrentPage}
+          productsFromData={productsFromData}
+          setCurrentPage={setCurrentPage}
           searchValue={searchValue}
           currentPage={currentPage}
           setMaxPage={setMaxPage}

@@ -32,14 +32,14 @@ const FilterOrSorting = ({ setValue, icon: Icon, options, placeholder }) => {
         onClick={() => setIsDown((prev) => !prev)}
         className="flex items-center w-full justify-between px-2 py-1 h-full cursor-pointer"
       >
-        <p className="font-semibold w-full truncate">{chosen || placeholder}</p>
+        <p className="font-semibold truncate ">{chosen || placeholder}</p>
         <ChevronDown
           className={`transition-transform ${isDown ? "rotate-180" : ""}`}
         />
       </div>
       {isDown && (
         <div className="absolute top-full overflow-x-hidden custom-scrollbar overflow-y-scroll left-0 w-full bg-[#F6FBF8] shadow-md z-100">
-          {options.map((opt, index) => (
+          {options?.map((opt, index) => (
             <p
               key={index}
               onClick={() => {

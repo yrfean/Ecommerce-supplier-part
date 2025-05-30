@@ -1,5 +1,3 @@
-
-
 const AddBatch = () => {
   return (
     <div></div>

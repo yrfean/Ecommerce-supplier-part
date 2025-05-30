@@ -16,23 +16,21 @@ const ProductsTable = ({
   setCurrentPage,
   setMaxPage,
   searchValue,
+  productsFromData,
 }) => {
-  const { data } = useGetProducts();
-  const productsFromData = data?.data || [];
-
   const [products, setProducts] = useState([]);
   const [currentProducts, setCurrentProducts] = useState([]);
-
   const itemsPerPage = 6;
-
-  // 🔍 Filter products on search or when data changes
+  // Filter products on search or when data changes
   useEffect(() => {
+    // console.log("pro from data", productsFromData);
     const filtered = productsFromData.filter((product) => {
       return (
         product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
         product.id.toString().includes(searchValue)
       );
     });
+    // console.log("filtered", filtered);
     setProducts(filtered);
     setCurrentPage(1);
   }, [searchValue, productsFromData]);
@@ -54,11 +52,6 @@ const ProductsTable = ({
       setCurrentProducts(sliced);
     }
   }, [currentPage, products]);
-
-  // 🐞 Debug
-  useEffect(() => {
-    if (products) console.log("products:", products);
-  });
 
   return (
     <div className="p-2 h-[447px] overflow-y-hidden">

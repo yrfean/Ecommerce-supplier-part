@@ -136,14 +136,27 @@ export const useGetProduct = (id) => {
   });
 };
 
-export const useGetProductsByCategory = (supplierId) => {
+export const useGetProductCategoriesForDropDown = (supplierId) => {
   return useQuery({
     queryKey: ["products by category", supplierId],
     queryFn: ({ queryKey }) => {
+      const [, supplierId] = queryKey;
+      return fetcher({
+        url: `suppliers/${supplierId}/categories`,
+        //change 102 into actaul supplier id after login and sugnup api integration
+      });
+    },
+    enabled: !!supplierId,
+    refetchOnWindowFocus: false,
+  });
+};
+export const useGetProductsByCategory = (id) => {
+  return useQuery({
+    queryKey: ["products by category", id],
+    queryFn: ({ queryKey }) => {
       const [, id] = queryKey;
       return fetcher({
-        url: `suppliers/102/categories/?activity_code=1001`,
-        //change 102 into actaul supplier id after login and sugnup api integration
+        url: `/products-create/?activity_code=1001&category=${id}`,
       });
     },
     enabled: !!id,
