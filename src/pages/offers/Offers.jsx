@@ -6,7 +6,7 @@ import Active from "./pages/Active";
 import Searchbar from "../../components/Searchbar";
 
 const Offers = () => {
-  const [page, setPage] = useState("schedule");
+  const [page, setPage] = useState("active");
 
   return (
     <div className="p-3">

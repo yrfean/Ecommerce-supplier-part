@@ -32,9 +32,9 @@ const Navbar = () => {
           </div>
         </div> */}
         {/* settings */}
-        <div className="bg-[#F1F1F1] rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center">
+        {/* <div className="bg-[#F1F1F1] rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center">
           <Settings className="w-5 h-5" />
-        </div>
+        </div> */}
         {/* notifications */}
         <div className="bg-[#F1F1F1] relative rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center">
           <div className="h-2 w-2 bg-[#47BA82] absolute top-[10px] right-[12px] rounded-full" />

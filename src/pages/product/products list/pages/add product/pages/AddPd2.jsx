@@ -192,6 +192,7 @@ const AddPd2 = ({
               //   return alert("Please fill all inputs");
               // }
               formik.handleSubmit();
+              location.href = "/product";
               // setPage(3);
             }}
             className="h-[40px] outline w-[100px] cursor-pointer text-center pt-2 bg-[#47BA82] hover:bg-[#3DA372] transition-all duration-300 text-white rounded-lg"

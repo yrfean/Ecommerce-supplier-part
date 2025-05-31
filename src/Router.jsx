@@ -35,6 +35,7 @@ import AddProduct from "./pages/product/products list/pages/add product/pages/Ad
 import MyProfile from "./pages/my profile/MyProfile";
 import Mock from "./Mock";
 import ShippingSchedule from "./pages/shipping management/Components/ShippingSchedule";
+import AddUser from "./pages/user role/Add user/AddUser";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -61,7 +62,10 @@ export const router = createBrowserRouter([
       { path: "/order", element: <Order /> },
       { path: "/return-management", element: <Return /> },
       { path: "/shipping-management", element: <Shipping /> },
-      { path: "/shipping-management/shipping-schedule", element: <ShippingSchedule /> },
+      {
+        path: "/shipping-management/shipping-schedule",
+        element: <ShippingSchedule />,
+      },
       { path: "/offers", element: <Offers /> },
       { path: "/payments", element: <Payments /> },
       { path: "/payments/refund", element: <Refund /> },
@@ -70,6 +74,7 @@ export const router = createBrowserRouter([
       { path: "/partial-accept", element: <PartialAccept /> },
       { path: "/sales-summery", element: <SalesSummery /> },
       { path: "/user-role", element: <UserRole /> },
+      { path: "/user-role/add-user", element: <AddUser /> },
       { path: "/user-role/role-management", element: <RoleManagement /> },
       { path: "/configuration", element: <Configuration /> },
       { path: "/configuration/iD-configuration", element: <IdConfiguration /> },

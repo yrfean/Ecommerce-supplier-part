@@ -33,7 +33,7 @@ const navitems = [
   },
   { name: "Offers", location: "/offers", icon: "ic:outline-local-offer" },
   {
-    name: "payment",
+    name: "Payment",
     location: "/payments",
     icon: "fluent-mdl2:payment-card",
     children: [
