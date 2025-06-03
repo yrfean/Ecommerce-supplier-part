@@ -1,44 +1,44 @@
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import TextField from "@mui/material/TextField";
+import { useState } from "react";
 
 const Mock = () => {
+  const [selectedFruits, setSelectedFruits] = useState([]);
+
+  const handleChange = (e) => {
+    const values = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
+    setSelectedFruits(values);
+  };
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DatePicker
-        label=""
-        value={""}
-        onChange={(newValue) => setValue(newValue?.toISOString().slice(0, 10))}
-        enableAccessibleFieldDOMStructure={false}
-        slots={{ textField: TextField }}
-        slotProps={{
-          textField: {
-            sx: {
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldset": {
-                  borderColor: "#47BA82",
-                },
-              },
-            },
-          },
-          day: {
-            sx: {
-              "&.Mui-selected": {
-                backgroundColor: "#47BA82 !important", // force the color
-                color: "white",
-              },
-              "&.Mui-selected.Mui-focusVisible": {
-                backgroundColor: "#47BA82 !important", // focused selected
-              },
-              "&.Mui-selected:hover": {
-                backgroundColor: "#47BA82 !important", // hover on selected
-              },
-            },
-          },
-        }}
-      />
-    </LocalizationProvider>
+    <div className="max-w-md mx-auto mt-10">
+      <label
+        htmlFor="fruits"
+        className="block text-sm font-medium text-gray-700 mb-2"
+      >
+        Select your favorite fruits
+      </label>
+
+      <select
+        id="fruits"
+        name="fruits"
+        multiple
+        onChange={handleChange}
+        className="w-full h-40 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+      >
+        <input type="checkbox" name="" id="" />
+      </select>
+
+      <div className="mt-4">
+        <h2 className="text-sm font-medium text-gray-700">Selected:</h2>
+        <ul className="list-disc list-inside text-gray-600">
+          {selectedFruits.map((fruit) => (
+            <li key={fruit}>{fruit}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 

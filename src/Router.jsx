@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
       { path: "/user-role/add-user", element: <AddUser /> },
       { path: "/user-role/role-management", element: <RoleManagement /> },
       { path: "/configuration", element: <Configuration /> },
-      { path: "/configuration/iD-configuration", element: <IdConfiguration /> },
+      // { path: "/configuration/iD-configuration", element: <IdConfiguration /> },
       { path: "/configuration/email", element: <Email /> },
       { path: "/mock", element: <Mock /> },
     ],

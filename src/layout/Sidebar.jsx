@@ -55,7 +55,7 @@ const navitems = [
   {
     name: "User role",
     location: "/user-role",
-    icon: "grommet-icons:user-new",
+    icon: "ph:user-focus-bold",
     children: [
       { name: "Role managemenet", location: "/user-role/role-management" },
     ],
@@ -65,7 +65,7 @@ const navitems = [
     location: "/configuration",
     icon: "lucide:user-cog",
     children: [
-      { name: "ID configuration", location: "/configuration/iD-configuration" },
+      // { name: "ID configuration", location: "/configuration/iD-configuration" },
       { name: "Email", location: "/configuration/email" },
     ],
   },
@@ -102,9 +102,7 @@ const Sidebar = () => {
                   setDrop(false);
                 }}
                 className={`w-full mb-1 flex transition-all duration-300 text-gray-800 items-center hover:outline-[#A7E6C6] rounded-xl font-semibold gap-2  px-10 h-[43px] relative cursor-pointer ${
-                  location === item.location
-                    ? "bg-[#47BA82] text-white"
-                    : ""
+                  location === item.location ? "bg-[#47BA82] text-white" : ""
                 }`}
               >
                 {/* icon */}
@@ -129,6 +127,10 @@ const Sidebar = () => {
                     <ChevronDown
                       className={`w-4 h-4 text-[#0000009C] transition-all duration-300 ${
                         drop === item.name ? "rotate-180" : ""
+                      } ${
+                        location === item.location
+                          ? "text-white"
+                          : ""
                       }`}
                     />
                   </div>
