@@ -1,7 +1,9 @@
 const AddBatch = () => {
   return (
-    <div></div>
+    <div>
+      <h1>Add Batch</h1>  
+    </div>
   );
-}
+};
 
-export default AddBatch
+export default AddBatch;

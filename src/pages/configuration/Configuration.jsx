@@ -1,5 +1,6 @@
 import { ArrowDownZA, Edit, Funnel, Search } from "lucide-react";
 import FilterOrSorting from "../../components/FilterOrSorting";
+import IdConfigurationInput from "./Components/IdConfigurationInput";
 
 const titles = [
   "Code Type",
@@ -124,7 +125,9 @@ const Configuration = () => {
         </table>
       </div>
       {/* id config */}
-      
+      <div className="mt-2">
+         <IdConfigurationInput />
+      </div>
     </div>
   );
 };

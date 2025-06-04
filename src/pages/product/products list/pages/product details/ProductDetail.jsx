@@ -89,7 +89,7 @@ const ProductDetail = () => {
             <div className="flex justify-center mt-5">
               <div
                 onClick={() =>
-                  (location.href = "/product/product-details/add-batch")
+                  (location.href = `/product/product-details/add-batch/${id}`)
                 }
                 className="bg-[#47BA82] hover:bg-[#47BA82]/80 transition-all duration-300 cursor-pointer text-center text-white h-[35px] py-1 px-4 rounded-lg"
               >

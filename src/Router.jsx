@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
       { path: "/product", element: <Product /> },
       { path: "/product/add-product", element: <AddProduct /> },
       { path: "/product/product-details/*", element: <ProductDetails /> },
-      { path: "/product/product-details/add-batch", element: <AddBatch /> },
+      { path: "/product/product-details/add-batch/*", element: <AddBatch /> },
       { path: "/product/advertising-windows", element: <AdvertisingWindows /> },
       { path: "/product/advance-storage", element: <AdvanceStorage /> },
       { path: "/product/expiry-list", element: <ExpiryList /> },

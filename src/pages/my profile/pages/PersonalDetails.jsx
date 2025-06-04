@@ -33,9 +33,12 @@ const PersonalDetails = () => {
         </div>
       </div>
       {/* line */}
-      <div className="h-[1.2px] w- my-2 bg-gray-300" />
+      <div className="h-[1.2px]  my-2 bg-gray-300" />
 
-     
+    {/* inputs */}
+     <div>
+      hai
+     </div>
     </div>
   );
 };
