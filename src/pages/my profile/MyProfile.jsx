@@ -1,10 +1,12 @@
 import { useState } from "react";
 import PersonalDetails from "./pages/PersonalDetails";
 import Company from "./pages/Company";
-import Security from "./pages/Security"
+import Security from "./pages/Security";
+import { Building2, Edit, Mail, Phone, X } from "lucide-react";
 
 const MyProfile = () => {
   const [page, setPage] = useState("personalDetails");
+  const [isEditable, setISEditable] = useState(false);
 
   return (
     <div>
@@ -52,22 +54,71 @@ const MyProfile = () => {
         </div>
       </div>
 
-      {/*comp */}
-      <div className="w-full h-[460px] bg-[#F1F1F1] rounded-lg p-3 mt-2">
-        {page === "personalDetails" ? (
-          <div>
-            <PersonalDetails />{" "}
+      <div className="bg-[#F1F1F1] mt-2 rounded-lg p-3">
+        {/* dp,name and supplier */}
+        <div className="flex items-center gap-3 ml-5">
+          <div className="shadow-lg shadow-[#47BA82]/30 w-fit h-fit rounded-full bg-white p-1">
+            <img
+              src="/user2.avif"
+              alt="user dp"
+              className="w-[120px] h-[120px]  object-cover rounded-full outline-3 outline-[#47BA82]"
+            />
           </div>
-        ) : page === "company" ? (
           <div>
-            <Company />{" "}
+            <h1 className="font-semibold text-xl">Hermione Granger</h1>
+            <p className="text-sm">Supplier </p>
           </div>
-        ) : (
-          <div>
-            {" "}
-            <Security />
+        </div>
+        {/* company name ,number ,email */}
+        <div className="flex justify-between mx-7 mt-2">
+          <div className="flex items-center gap-6">
+            <div className="flex gap-2 text-sm items-center">
+              <Building2 size={16} />
+              <p>Company name</p>
+            </div>
+            <div className="flex gap-2 text-sm items-center">
+              <Phone size={16} />
+              <p>+121 843902284</p>
+            </div>
+            <div className="flex gap-2 text-sm items-center">
+              <Mail size={16} />
+              <p>Company@gmail.com</p>
+            </div>
           </div>
-        )}
+          {isEditable ? (
+            <X
+              size={20}
+              onClick={() => setISEditable(false)}
+              className="text-[#47BA82] cursor-pointer"
+            />
+          ) : (
+            <Edit
+              onClick={() => setISEditable(true)}
+              size={18}
+              className="text-[#47BA82] cursor-pointer"
+            />
+          )}
+        </div>
+        {/* line */}
+        <div className="h-[1.2px]  my-2 bg-gray-300" />
+
+        {/*comp */}
+        <div className="w-full h-[260px] rounded-lg p-3 mt-1">
+          {page === "personalDetails" ? (
+            <div>
+              <PersonalDetails isEditable={isEditable} />
+            </div>
+          ) : page === "company" ? (
+            <div>
+              <Company isEditable={isEditable} />{" "}
+            </div>
+          ) : (
+            <div>
+              {" "}
+              <Security isEditable={isEditable} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

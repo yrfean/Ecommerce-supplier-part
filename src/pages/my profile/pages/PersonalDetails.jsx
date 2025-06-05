@@ -1,44 +1,93 @@
-import { Building2, Mail, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import UserDetailsInput from "./components/UserDetailsInput";
+import DropDown from "./../../../components/DropDown";
+import Button from "./../../../login and signup pages/components/ButtonNoIcon";
 
-const PersonalDetails = () => {
+const PersonalDetails = ({ isEditable }) => {
+  const firstInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isEditable) {
+      firstInputRef.current.focus();
+    }
+  }, [isEditable]);
   return (
-    <div>
-      {/* dp,name and supplier */}
-      <div className="flex items-center gap-3 ml-5">
-        <div className="shadow-lg shadow-[#47BA82]/30 w-fit h-fit rounded-full bg-white p-1">
-          <img
-            src="/user2.avif"
-            alt="user dp"
-            className="w-[120px] h-[120px]  object-cover rounded-full outline-3 outline-[#47BA82]"
+    <div className="">
+      {/* inputs */}
+      <div className="px-4">
+        <div className="grid grid-cols-2 pr-2 gap-[4%] space-y-1 h-[250px] overflow-auto custom-scrollba">
+          <div className="">
+            <UserDetailsInput
+              ref={firstInputRef}
+              isEditable={isEditable}
+              label={"Company Name"}
+              value={"Demo Company name"}
+            />
+          </div>
+          <UserDetailsInput
+            isEditable={isEditable}
+            label={"Place"}
+            value={"Rathmirty nagar,Bangloore"}
           />
-        </div>
-        <div>
-          <h1 className="font-semibold text-xl">Hermione Granger</h1>
-          <p className="text-sm">Supplier </p>
-        </div>
-      </div>
-      {/* comp name ,number ,email */}
-      <div className="flex gap-6 ml-7 mt-2">
-        <div className="flex gap-2 text-sm items-center">
-          <Building2 size={16} />
-          <p>Company name</p>
-        </div>
-        <div className="flex gap-2 text-sm items-center">
-          <Phone size={16} />
-          <p>+121 843902284</p>
-        </div>
-        <div className="flex gap-2 text-sm items-center">
-          <Mail size={16} />
-          <p>Company@gmail.com</p>
-        </div>
-      </div>
-      {/* line */}
-      <div className="h-[1.2px]  my-2 bg-gray-300" />
+          {isEditable ? (
+            <div>
+              <label htmlFor="Category" className="block text-lg mb-1">
+                Category
+              </label>
+              <div
+                className={`h-10 outline text-gray-600 outline-gray-200 rounded-md transition-all duraton-300 ${
+                  isEditable ? "shadow" : ""
+                }`}
+              >
+                <DropDown
+                  options={["Category 1", "Category 2"]}
+                  placeholder={"Cloth Shop"}
+                  bg={"bg-white"}
+                />
+              </div>
+            </div>
+          ) : (
+            <UserDetailsInput
+              isEditable={isEditable}
+              label={"Category"}
+              value={"Cloth Shop"}
+            />
+          )}
+          <UserDetailsInput
+            isEditable={isEditable}
+            label={"State"}
+            value={"Kerala"}
+          />
+          <UserDetailsInput
+            isEditable={isEditable}
+            label={"Whatsapp number"}
+            value={"234323432"}
+          />
+          <UserDetailsInput
+            isEditable={isEditable}
+            label={"Disctrict"}
+            value={"Kozhikode"}
+          />
 
-    {/* inputs */}
-     <div>
-      hai
-     </div>
+          <div className="">
+            <label htmlFor="address">Address</label>
+            <textarea
+              readOnly={!isEditable}
+              value={"Vethamangalath,mukkam..."}
+              className={`px-3 py-2 w-full rounded-md outline transition-all duration-300 outline-gray-200  text-gray-600 ${
+                isEditable ? "shadow  bg-white font-semibold" : "bg-gray-50"
+              } `}
+            />
+          </div>
+          {isEditable ? (
+            <div className="flex items-center justify-center">
+              <div className="w-40 mt-7">
+                <Button value={"Save"} />
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 };
