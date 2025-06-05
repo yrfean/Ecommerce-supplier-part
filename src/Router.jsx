@@ -36,6 +36,7 @@ import MyProfile from "./pages/my profile/MyProfile";
 import Mock from "./Mock";
 import ShippingSchedule from "./pages/shipping management/Components/ShippingSchedule";
 import AddUser from "./pages/user role/Add user/AddUser";
+import NotificationModal from "./pages/notification/Notification";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/my-profile", element: <MyProfile /> },
+      // { path: "/notifications", element: <NotificationModal /> },
       { path: "/product", element: <Product /> },
       { path: "/product/add-product", element: <AddProduct /> },
       { path: "/product/product-details/*", element: <ProductDetails /> },

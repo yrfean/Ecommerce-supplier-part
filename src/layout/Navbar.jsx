@@ -1,9 +1,11 @@
 import { Bell, Search, Settings } from "lucide-react";
 import BreadCrumbs from "./breadcrumbs/BreadCrumbs";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NotificationModal from "../pages/notification/Notification";
 
 const Navbar = () => {
+  const [viewNotification, setViewNotification] = useState(false);
   const scrollIntoViewRef = useRef(null);
   const navigate = useNavigate("/my-profile");
 
@@ -36,7 +38,10 @@ const Navbar = () => {
           <Settings className="w-5 h-5" />
         </div> */}
         {/* notifications */}
-        <div className="bg-[#F1F1F1] relative rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center">
+        <div
+          className="bg-[#F1F1F1] relative rounded-lg h-[42px] w-[42px] hover:text-[#47BA82] transition-all duration-300 cursor-pointer flex items-center justify-center"
+          onClick={() => setViewNotification(true)}
+        >
           <div className="h-2 w-2 bg-[#47BA82] absolute top-[10px] right-[12px] rounded-full" />
           <Bell className="w-5 h-5" />
         </div>
@@ -45,7 +50,7 @@ const Navbar = () => {
           onClick={() => navigate("/my-profile")}
           className="flex flex-col items-end cursor-pointer"
         >
-          <h1 className="font-semibold truncate max-w-[150px]">Pookie🦃🦃🦃</h1>
+          <h1 className="font-semibold truncate max-w-[150px]">ookie🦃🦃🦃</h1>
           <p className="text-sm -mt-1 text-gray-600">Supplier</p>
         </div>
         {/* dp */}
@@ -57,6 +62,12 @@ const Navbar = () => {
           />
         </div>
       </div>
+      {
+        viewNotification && (
+          <NotificationModal
+            setViewNotification={setViewNotification}
+          />
+        )}
     </div>
   );
 };
