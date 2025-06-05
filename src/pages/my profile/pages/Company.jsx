@@ -55,9 +55,10 @@ const Company = ({ isEditable }) => {
               } `}
             />
           </div>
+          <div></div>
           {isEditable ? (
-            <div className="flex items-center justify-center">
-              <div className="w-40 mt-7">
+            <div className="flex justify-end">
+              <div className="w-40 mt-">
                 <Button value={"Save"} />
               </div>
             </div>
