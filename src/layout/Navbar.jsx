@@ -66,6 +66,7 @@ const Navbar = () => {
         viewNotification && (
           <NotificationModal
             setViewNotification={setViewNotification}
+            viewNotification={viewNotification}
           />
         )}
     </div>

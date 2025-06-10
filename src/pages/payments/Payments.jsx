@@ -1,6 +1,5 @@
 import { useState } from "react";
 import NormalTable from "./../../components/NormalTable";
-import OrdersTable from "./../order/components/OrdersTable";
 import { ArrowDownZA, Funnel, Search } from "lucide-react";
 import FilterOrSorting from "../../components/FilterOrSorting";
 import PaymentDetails from "./Components/PaymentDetails";

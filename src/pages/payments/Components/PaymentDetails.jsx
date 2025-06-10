@@ -1,4 +1,8 @@
+import { useState } from "react";
+import ReceiptModal from "../modal/Receipt";
+
 const PaymentDetails = ({ details }) => {
+  const [viewReceipt, setViewReceipt] = useState(false);
   return (
     <div className="w-full h-full bg-[#F6FBF8] rounded-lg p-4 ">
       <div className="w-ful mt-7 h-fi grid grid-cols-2 grid-rows-3 gap-5 pl-10 space-x-20">
@@ -28,10 +32,14 @@ const PaymentDetails = ({ details }) => {
         })}
       </div>
       <div className="w-full flex justify-end mt-5">
-        <div className="w-50 h-10 rounded-lg  cursor-pointer hover:bg-[#354A5F]/90 transition-all duration-300 bg-[#354A5F] text-white flex items-center justify-center">
-          Get Reciept
+        <div
+          className="w-50 h-10 rounded-lg  cursor-pointer hover:bg-[#354A5F]/90 transition-all duration-300 bg-[#354A5F] text-white flex items-center justify-center"
+          onClick={() => setViewReceipt(true)}
+        >
+          Get Receipt
         </div>
       </div>
+      {viewReceipt &&  <ReceiptModal open={viewReceipt} onClose={() => setViewReceipt(false)} />}
     </div>
   );
 };
