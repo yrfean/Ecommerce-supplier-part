@@ -124,6 +124,7 @@ export const useGetProducts = () => {
     refetchOnWindowFocus: false,
   });
 };
+
 export const useGetProduct = (id) => {
   return useQuery({
     queryKey: ["product", id],

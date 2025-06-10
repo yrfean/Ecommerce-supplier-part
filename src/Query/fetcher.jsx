@@ -5,16 +5,11 @@ export const fetcher = async ({
   data = {},
   params = {},
 }) => {
-  try {
-    const response = await api({
-      method,
-      url,
-      data,
-      params,
-      
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await api({
+    method,
+    url,
+    data,
+    params,
+  });
+  return response.data;
 };

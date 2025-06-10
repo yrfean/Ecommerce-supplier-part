@@ -45,7 +45,7 @@ const Login = () => {
           type={"text"}
           formik={formik}
         />
-        <div className="relative">
+        <div className="relative mt-6">
           <Input
             name={"password"}
             placeholder={"Your Password"}
