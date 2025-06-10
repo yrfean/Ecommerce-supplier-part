@@ -5,7 +5,7 @@ import Security from "./pages/Security";
 import { Building2, Edit, Mail, Phone, X } from "lucide-react";
 
 const MyProfile = () => {
-  const [page, setPage] = useState("personalDetails");
+  const [page, setPage] = useState("security");
   const [isEditable, setISEditable] = useState(false);
 
   return (
@@ -86,7 +86,7 @@ const MyProfile = () => {
               <p>Company@gmail.com</p>
             </div>
           </div>
-          {isEditable ? (
+          {page === "security" ? null : isEditable ? (
             <X
               size={20}
               onClick={() => setISEditable(false)}

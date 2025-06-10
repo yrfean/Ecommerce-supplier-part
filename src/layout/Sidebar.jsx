@@ -81,7 +81,7 @@ const Sidebar = () => {
   });
   return (
     <div className="bg-[#F1F1F1] h-full rounded-3xl p-2 relative">
-      {/* logo*/}
+      {/* logo */}
       <div className="w-full absolut cursor-pointer flex justify-center items-center mt-7 mb-3">
         <img
           onClick={() => navigate("/")}
@@ -127,11 +127,7 @@ const Sidebar = () => {
                     <ChevronDown
                       className={`w-4 h-4 text-[#0000009C] transition-all duration-300 ${
                         drop === item.name ? "rotate-180" : ""
-                      } ${
-                        location === item.location
-                          ? "text-white"
-                          : ""
-                      }`}
+                      } ${location === item.location ? "text-white" : ""}`}
                     />
                   </div>
                 ) : null}
