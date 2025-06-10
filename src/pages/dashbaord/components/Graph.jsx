@@ -11,7 +11,8 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import DropDown from "../../../components/DropDown";
-import { useGetBusinnesInsights } from "../../../Query/Mutate";
+
+import { useGetBusinnesInsights } from "./../../../Query/dashboard queries/DashboardApi";
 
 ChartJS.register(
   LineElement,
@@ -135,7 +136,6 @@ const Graph = () => {
     },
   };
 
- 
   if (!data) {
     return <div className="w-[500px] h-[308px]">Loading...</div>;
   }

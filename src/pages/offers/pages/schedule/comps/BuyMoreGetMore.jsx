@@ -2,14 +2,9 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import DropdownInput from "../../../../product/products list/pages/add product/component/DropdownInput";
 import Calender from "../../../../../components/DatePicker";
-import {
-  useGetAllBatches,
-  useGetProductIds,
-  useGetStockDetails,
-  usePostEventOffers,
-  usePostOffers,
-} from "../../../../../Query/Mutate";
 import { useEffect, useState } from "react";
+import { usePostOffers } from "../../../../../Query/Mutate";
+import { useGetAllBatches, useGetProductIds, useGetStockDetails } from "../../../../../Query/products services/ProductsApi";
 
 const validationSchema = Yup.object().shape({
   product: Yup.string().required("Product name is required"),

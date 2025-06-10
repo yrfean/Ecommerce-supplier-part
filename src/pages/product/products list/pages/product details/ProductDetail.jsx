@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useGetProduct } from "../../../../../Query/Mutate";
+import { useGetProduct } from "../../../../../Query/products services/ProductsApi";
 
 const ProductDetail = () => {
   const [, , , id] = location.pathname.split("/");

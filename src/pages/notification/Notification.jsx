@@ -89,9 +89,6 @@ const NotificationModal = ({ viewNotification, setViewNotification }) => {
                     {n.actions && (
                       <div className="mt-2 text-sm flex gap-4 text-green-600 font-medium">
                         <button className="hover:underline">Check out</button>
-                        <button className="hover:underline">
-                          Mark as read
-                        </button>
                       </div>
                     )}
                   </div>

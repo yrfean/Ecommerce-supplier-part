@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useGetProducts } from "../../../../Query/Mutate";
 
 const titles = [
   "SI no.",

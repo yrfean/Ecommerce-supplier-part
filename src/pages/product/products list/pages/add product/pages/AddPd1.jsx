@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import DropdownInput from "../component/DropdownInput";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "../../../../../../login and signup pages/components/ButtonNoIcon";
-import { useGetCategory, useGetGST } from "../../../../../../Query/Mutate";
+import {
+  useGetCategory,
+  useGetGST,
+} from "../../../../../../Query/products services/ProductsApi";
 
 const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
   const gstDetails = useGetGST().data;
@@ -81,7 +84,6 @@ const AddPd1 = ({ setPage, formik, setShowExpiry }) => {
 
   return (
     <div className="bg-[#F8F8F8] flex items-center gap-3 w-full h-[476px] rounded-lg">
-      
       {/* details inputs */}
       <div className="p-5 w-[47%]">
         <div>

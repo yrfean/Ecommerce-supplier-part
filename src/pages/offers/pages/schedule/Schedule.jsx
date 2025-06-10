@@ -2,11 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SeasonalAndSmartInputs from "./comps/SeasonalAndSmartInputs";
 import BuyMoreGetMore from "./comps/BuyMoreGetMore";
 import DropdownInput from "../../../product/products list/pages/add product/component/DropdownInput";
-import {
-  useGetAllBatches,
-  useGetProductIds,
-  useGetStockDetails,
-} from "../../../../Query/Mutate";
+
 
 const offerTypes = [
   { name: "Smart Offer", id: "smart" },

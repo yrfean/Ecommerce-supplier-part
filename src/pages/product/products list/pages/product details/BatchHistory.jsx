@@ -1,8 +1,8 @@
 import { ArrowDownZA, Funnel, Search } from "lucide-react";
 import React, { useState } from "react";
 import BatchList from "./components/BatchList";
+import { useGetBatchHistory } from "../../../../../Query/products services/ProductsApi";
 
-import { useGetBatchHistory } from "../../../../../Query/Mutate";
 
 const filterOptions = ["someday"];
 
