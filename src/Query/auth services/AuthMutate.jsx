@@ -1,15 +1,17 @@
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";import axios from "axios";
+import { tokenLessApi } from "../../axios/axios";
 
 export const useLogin = () => {
   return useMutation({
     mutationFn: async (credentials) => {
-      const response = await axios.post("/auth/login/", credentials);
+      const response = await tokenLessApi.post("auth/supplier-login/", credentials);
       return response.data;
     },
+    
     onSuccess: (data) => {
       // You can handle successful login here, like storing the token
       localStorage.setItem("token", data.token);
+      console.log(data);
     },
     onError: (error) => {
       console.error("Login error:", error);

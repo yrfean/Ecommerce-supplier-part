@@ -5,25 +5,27 @@ import Button from "./components/ButtonNoIcon";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "../Query/auth services/AuthMutate";
 
 const validationSchema = yup.object({
-  email: yup.string().required("email is required").email(),
+  identifier: yup.string().required("email is required").email(),
   password: yup.string().required("password is required"),
 });
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { mutate } = useLogin();
 
   //formik handling
   const formik = useFormik({
     initialValues: {
-      email: "",
+      identifier: "",
       password: "",
     },
     validationSchema,
     onSubmit: (data) => {
-      console.log(data);
+      mutate(data);
     },
   });
 
@@ -39,7 +41,7 @@ const Login = () => {
       {/* inputs */}
       <div className="space-y-4 mb-7">
         <Input
-          name={"email"}
+          name={"identifier"}
           placeholder={"Email adress"}
           icon={Mail}
           type={"text"}
