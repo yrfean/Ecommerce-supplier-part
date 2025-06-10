@@ -1,7 +1,4 @@
-import React from 'react'
-import Login from './login';
-
-const Skelton = ({Comp}) => {
+const Skelton = ({ Comp }) => {
   return (
     <div className="w-screen h-screen px-6 py-3 flex justify-center items-center bg-[#F6FBF8]">
       {/* logo */}
@@ -18,6 +15,6 @@ const Skelton = ({Comp}) => {
       </div>
     </div>
   );
-}
+};
 
-export default Skelton
+export default Skelton;

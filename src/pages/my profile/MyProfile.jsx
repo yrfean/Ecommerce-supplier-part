@@ -5,7 +5,7 @@ import Security from "./pages/Security";
 import { Building2, Edit, Mail, Phone, X } from "lucide-react";
 
 const MyProfile = () => {
-  const [page, setPage] = useState("security");
+  const [page, setPage] = useState("personalDetails");
   const [isEditable, setISEditable] = useState(false);
 
   return (

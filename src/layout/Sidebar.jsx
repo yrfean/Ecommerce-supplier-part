@@ -60,15 +60,15 @@ const navitems = [
       { name: "Role managemenet", location: "/user-role/role-management" },
     ],
   },
-  {
-    name: "Configuration",
-    location: "/configuration",
-    icon: "lucide:user-cog",
-    children: [
-      // { name: "ID configuration", location: "/configuration/iD-configuration" },
-      { name: "Email", location: "/configuration/email" },
-    ],
-  },
+  // {
+  //   name: "Configuration",
+  //   location: "/configuration",
+  //   icon: "lucide:user-cog",
+  //   children: [
+  //     // { name: "ID configuration", location: "/configuration/iD-configuration" },
+  //     { name: "Email", location: "/configuration/email" },
+  //   ],
+  // },
 ];
 
 const Sidebar = () => {
@@ -78,7 +78,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     setLocation(window.location.pathname);
-  });
+  }, []);
   return (
     <div className="bg-[#F1F1F1] h-full rounded-3xl p-2 relative">
       {/* logo */}
