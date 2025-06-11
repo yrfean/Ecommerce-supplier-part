@@ -22,7 +22,7 @@ export const useAddProduct = () => {
 export const useGetGST = () => {
   return useQuery({
     queryKey: ["gst"],
-    queryFn: () => fetcher({ url: "" / gst / "" }),
+    queryFn: () => fetcher({ url:" / gst / "}),
     refetchOnWindowFocus: false,
   });
 };
