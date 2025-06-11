@@ -25,9 +25,6 @@ const CategoryPerfomanceChart = () => {
   const { data } = useGetBusinnesInsights();
   const [filter, setFilter] = useState("Weekly");
 
-  useEffect(() => {
-    if (data) console.log(data);
-  }, [data]);
 
   // Access the nested data object correctly
   const insightsData = data?.data || data;

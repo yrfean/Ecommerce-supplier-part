@@ -1,6 +1,14 @@
 import EditableInputWithModal from "./components/EditableInputWithModal";
+import { useEffect, useRef } from "react";
 
-const Security = () => {
+const Security = ({ isEditable }) => {
+  const firstInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isEditable) {
+      firstInputRef.current.focus();
+    }
+  }, [isEditable]);
   return (
     <div className="grid grid-cols-1 w-full h-[240px] pr-1 overflow-auto md:grid-cols-2 gap-2 pb-2 rounded-lg max-w-4xl mx-auto">
       <div className="col-span-2 w-[50%]">

@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
+import { fetcher } from "./../fetcher";
 
 export const useGetBusinnesInsights = () => {
   return useQuery({
-    queryKey: ["business insights"],
+    queryKey: ["business insight"],
     queryFn: () => fetcher({ url: "business-insights/" }),
     refetchOnWindowFocus: false,
   });

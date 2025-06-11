@@ -50,7 +50,7 @@ const Navbar = () => {
           onClick={() => navigate("/my-profile")}
           className="flex flex-col items-end cursor-pointer"
         >
-          <h1 className="font-semibold truncate max-w-[150px]">ookie🦃🦃🦃</h1>
+          <h1 className="font-semibold truncate max-w-[150px]">Pookie🦃🦃🦃</h1>
           <p className="text-sm -mt-1 text-gray-600">Supplier</p>
         </div>
         {/* dp */}
@@ -62,13 +62,12 @@ const Navbar = () => {
           />
         </div>
       </div>
-      {
-        viewNotification && (
-          <NotificationModal
-            setViewNotification={setViewNotification}
-            viewNotification={viewNotification}
-          />
-        )}
+      {viewNotification && (
+        <NotificationModal
+          setViewNotification={setViewNotification}
+          viewNotification={viewNotification}
+        />
+      )}
     </div>
   );
 };

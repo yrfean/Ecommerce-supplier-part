@@ -1,10 +1,13 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-
 import { useEffect } from "react";
 import { useGetBoxDetails } from "./../../../Query/dashboard queries/DashboardApi";
 
 const Boxes = () => {
   const { data } = useGetBoxDetails();
+
+  useEffect(() => {
+    if (data) console.log(data);
+  }, [data]);
 
   return (
     <div className="flex justify-around">
