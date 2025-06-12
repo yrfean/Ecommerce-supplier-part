@@ -27,11 +27,11 @@ const Dashboard = () => {
   }, [data]);
 
   return (
-    <div className="p-3">
+    <div className="p3 h-full ">
       <h1 className="text-xl font-bold">Dashboard</h1>
 
       {/* boxes */}
-      <div className="mt-8">
+      <div className="mt-8 w-full">
         <Boxes />
       </div>
 

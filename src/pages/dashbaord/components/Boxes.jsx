@@ -10,7 +10,7 @@ const Boxes = () => {
   }, [data]);
 
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around w-full">
       {/* today sales */}
       <div className="flex items-center justify-center px-5 gap-5 rounded-lg w-[210px] shadow h-[90px] bg-[#F4FFFA]">
         <div className="">

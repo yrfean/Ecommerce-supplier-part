@@ -13,7 +13,7 @@ const Navbar = () => {
     scrollIntoViewRef.current?.scrollIntoView({ behaviour: "smooth" });
   });
   return (
-    <div className="w-full flex justify-between items-center h-[50px]">
+    <div className="w-full  flex justify-between items-center h-[50px]">
       {/* breadcrumbs */}
       <div className="overflow-x-scroll flex w-[370px] overflow-y-hidden custom-scrollbar">
         <BreadCrumbs />
