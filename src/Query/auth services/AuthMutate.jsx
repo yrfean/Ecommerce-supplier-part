@@ -31,4 +31,4 @@ export const useSignup = () => {
       console.error("Signup error:", error);
     },
   });
-}; 
+};
