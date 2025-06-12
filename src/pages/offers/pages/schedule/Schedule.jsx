@@ -3,7 +3,6 @@ import SeasonalAndSmartInputs from "./comps/SeasonalAndSmartInputs";
 import BuyMoreGetMore from "./comps/BuyMoreGetMore";
 import DropdownInput from "../../../product/products list/pages/add product/component/DropdownInput";
 
-
 const offerTypes = [
   { name: "Smart Offer", id: "smart" },
   { name: "Seasonal offer", id: "seasonal" },
