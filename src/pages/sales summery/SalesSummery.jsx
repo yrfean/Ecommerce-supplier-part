@@ -4,7 +4,7 @@ import TopSellingItems from "./Components/TopSellingItems";
 
 const SalesSummery = () => {
   return (
-    <div className="p-3 h-[591px] overflow-y-auto custom-scrollbar">
+    <div className="p-3 h-full overflow-y-auto custom-scrollbar">
       <h1 className="text-2xl font-semibold mb-3">Sales Summery</h1>
 
       <div className="w-full flex gap-[4%] mb-4">

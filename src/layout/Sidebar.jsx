@@ -81,7 +81,7 @@ const Sidebar = () => {
   //   setLocation(window.location.pathname);
   // }, [window.location.pathname]);
   return (
-    <div className="bg-[#F1F1F1] h-full rounded-3xl p-2 relative">
+    <aside className="h-[95dvh] bg-[#F1F1F1] w-64 shadow-sm p- flex flex-col rounded-2xl fixed top-1/2 left6 transform -translate-y-1/2">
       {/* logo */}
       <div className="w-full absolut cursor-pointer flex justify-center items-center mt-7 mb-1">
         <img
@@ -152,7 +152,7 @@ const Sidebar = () => {
           );
         })}
       </div>
-    </div>
+    </aside>
   );
 };
 
