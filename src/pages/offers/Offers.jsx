@@ -9,7 +9,7 @@ const Offers = () => {
   const [page, setPage] = useState("active");
 
   return (
-    <div className="p-3 h-full">
+    <div className="p-3 h-full overflow-y-auto custom-scrollbar">
       <h1 className="font-bold text-2xl mb-4">Offers</h1>
 
       {/*navbar */}
