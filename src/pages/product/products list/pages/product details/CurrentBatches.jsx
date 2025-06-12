@@ -2,7 +2,7 @@ import { ArrowDownZA, Funnel, Plus, Search } from "lucide-react";
 import { useState } from "react";
 import BatchList from "./components/BatchList";
 import FilterOrSorting from "../../../../../components/FilterOrSorting";
-import { useGetCurrentBatches } from "../../../../../Query/Mutate";
+import { useGetCurrentBatches } from "../../../../../Query/products services/ProductsApi";
 
 const filterOptions = ["today", "monday"];
 

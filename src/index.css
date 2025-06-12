@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
-
 /* elam white - #F4F4F4 */
 /* green - #47BA82 */
 /* drak green(for hover) - #3DA372 */
 /* light green - #F6FBF8 */
 /* light gray - #F8F8F8 (for bg) */
-
 
 .custom-full-calendar {
   width: 100% !important;
@@ -18,14 +16,13 @@
   border-radius: 16px;
   padding: 10px;
   background-color: white;
-
 }
 
 /* Header (month + year + arrows) */
 .custom-full-calendar .react-calendar__navigation {
   font-size: 20px;
   font-weight: 600;
-  background-color: #47BA82;
+  background-color: #47ba82;
   color: white;
   border-radius: 8px;
 }
@@ -37,7 +34,7 @@
 
 /* Weekday labels (Mon, Tue...) */
 .custom-full-calendar .react-calendar__month-view__weekdays {
-  color: #47BA82;
+  color: #47ba82;
   font-weight: 600;
 }
 
@@ -50,7 +47,7 @@
 }
 /* tile hover */
 .custom-full-calendar .react-calendar__tile:hover {
-  background-color: #47BA82;
+  background-color: #47ba82;
   color: white;
   border-radius: 8px;
   transform: scale(1.05); /* smooth zoom effect */
@@ -58,7 +55,7 @@
 
 /* Selected day */
 .custom-full-calendar .react-calendar__tile--active {
-  background-color: #47BA82 !important;
+  background-color: #47ba82 !important;
   color: white !important;
   border-radius: 10px;
 }
@@ -69,14 +66,14 @@
 /* Today's date */
 .custom-full-calendar .react-calendar__tile--now {
   background: rgba(71, 186, 130, 0.1);
-  border: 1px solid #47BA82;
-  color: #47BA82;
+  border: 1px solid #47ba82;
+  color: #47ba82;
   border-radius: 8px;
 }
 
 /* Hover effect */
 .custom-full-calendar .react-calendar__tile:hover {
-  background-color: #47BA82;
+  background-color: #47ba82;
   color: white;
   border-radius: 8px;
 }
@@ -87,6 +84,7 @@
 }
 
 /* ------------------------ */
+
 /* hide scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   display: none; /* Hides scrollbar */
@@ -104,7 +102,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #47BA82;
+  background-color: #47ba82;
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;

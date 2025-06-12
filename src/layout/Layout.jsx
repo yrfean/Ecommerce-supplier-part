@@ -2,11 +2,11 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-const Layout = () => { 
+const Layout = () => {
   return (
     <div className="w-screen h-screen relative p-3 overflow-x-hidden">
       {/* sidebar */}
-      <div className="fixed w-[270px] px- pb-6 py- h-full">
+      <div className="fixed w-[270px]  h-full ">
         <Sidebar />
       </div>
       {/* other than sidebar */}

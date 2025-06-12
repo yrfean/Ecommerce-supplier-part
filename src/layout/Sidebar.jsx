@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { ArrowDown, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 
 const navitems = [
@@ -60,29 +60,30 @@ const navitems = [
       { name: "Role managemenet", location: "/user-role/role-management" },
     ],
   },
-  {
-    name: "Configuration",
-    location: "/configuration",
-    icon: "lucide:user-cog",
-    children: [
-      // { name: "ID configuration", location: "/configuration/iD-configuration" },
-      { name: "Email", location: "/configuration/email" },
-    ],
-  },
+  // {
+  //   name: "Configuration",
+  //   location: "/configuration",
+  //   icon: "lucide:user-cog",
+  //   children: [
+  //     // { name: "ID configuration", location: "/configuration/iD-configuration" },
+  //     { name: "Email", location: "/configuration/email" },
+  //   ],
+  // },
 ];
 
 const Sidebar = () => {
-  const [location, setLocation] = useState(window.location.pathname);
+  // const [location, setLocation] = useState(window.location.pathname);
+  const location = useLocation().pathname;
   const [drop, setDrop] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setLocation(window.location.pathname);
-  });
+  // useEffect(() => {
+  //   setLocation(window.location.pathname);
+  // }, [window.location.pathname]);
   return (
     <div className="bg-[#F1F1F1] h-full rounded-3xl p-2 relative">
-      {/* logo*/}
-      <div className="w-full absolut cursor-pointer flex justify-center items-center mt-7 mb-3">
+      {/* logo */}
+      <div className="w-full absolut cursor-pointer flex justify-center items-center mt-7 mb-1">
         <img
           onClick={() => navigate("/")}
           src="/5e9c7c8b3e0a45d341a85e580aa734f6be1127ec.png"
@@ -92,13 +93,14 @@ const Sidebar = () => {
       </div>
 
       {/* navbar items---- */}
-      <div className="px-1 mt-[2px] pt-1 h-[470px]  overflow-y-scroll custom-scrollbar">
+      <div className="px-1 pt-1 h-[480px]  overflow-y-scroll custom-scrollbar">
         {navitems.map((item) => {
           return (
             <React.Fragment key={item.name}>
               <div
                 onClick={() => {
                   navigate(item.location);
+
                   setDrop(false);
                 }}
                 className={`w-full mb-1 flex transition-all duration-300 text-gray-800 items-center hover:outline-[#A7E6C6] rounded-xl font-semibold gap-2  px-10 h-[43px] relative cursor-pointer ${
@@ -127,11 +129,7 @@ const Sidebar = () => {
                     <ChevronDown
                       className={`w-4 h-4 text-[#0000009C] transition-all duration-300 ${
                         drop === item.name ? "rotate-180" : ""
-                      } ${
-                        location === item.location
-                          ? "text-white"
-                          : ""
-                      }`}
+                      } ${location === item.location ? "text-white" : ""}`}
                     />
                   </div>
                 ) : null}

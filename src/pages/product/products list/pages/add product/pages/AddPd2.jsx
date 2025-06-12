@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Input from "../../../../../../components/Input";
-import AddProductInput from "../component/AddProductInput";
-import DropDown from "../../../../../../components/DropDown";
-import { ChevronDown, Edit, Plus, X } from "lucide-react";
-import DropdownInput from "../component/DropdownInput";
-import OrdersTable from "../../../../../order/components/OrdersTable";
-import CancelAndNext from "./components/CancelAndNext";
 import AddProductTable from "./components/AddProductTable";
-import { useGetUnits } from "../../../../../../Query/Mutate";
-import { useFormik } from "formik";
 import StockForm from "./components/StockForm";
 
 const AddPd2 = ({

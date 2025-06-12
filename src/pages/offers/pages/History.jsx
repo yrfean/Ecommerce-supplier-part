@@ -1,5 +1,5 @@
-import React from "react";
 import NormalTable from "../../../components/NormalTable";
+import { useGetHistoryOffers } from "../../../Query/offers queries/OffersApi";
 
 const titles = [
   "Product ID",
@@ -18,6 +18,8 @@ const offerHistoryDetails = [
 ];
 
 const History = () => {
+  const { data: historyOffers } = useGetHistoryOffers();
+
   return (
     <div className="w-full h-[445px] overflow-auto">
       <NormalTable titles={titles} values={offerHistoryDetails} />

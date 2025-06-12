@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import DropDown from "../../../components/DropDown";
-import { useGetBusinnesInsights } from "../../../../src/Query/Mutate";
+import { useGetBusinnesInsights } from "../../../Query/dashboard queries/DashboardApi";
 
 ChartJS.register(
   LineElement,

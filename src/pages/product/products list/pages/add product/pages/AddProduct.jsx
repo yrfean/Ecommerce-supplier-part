@@ -2,16 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import ButtonWithIcon from "../../../../../../components/ButtonWithIcon";
 import { List } from "lucide-react";
 import PageProgressBar from "../component/PageProgressBar";
-import Input from "../../../../../../components/Input";
 import { useFormik } from "formik";
-import DropdownInput from "../component/DropdownInput";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import Button from "../../../../../../login and signup pages/components/ButtonNoIcon";
+
 import AddPd1 from "./AddPd1";
 import AddPd2 from "./AddPd2";
 import AddPd3 from "./AddPd3";
 import * as yup from "yup";
-import { useAddProduct, useGetUnits } from "../../../../../../Query/Mutate";
+import { useAddProduct } from "../../../../../../Query/products services/ProductsApi";
 
 // const stock_details = [];
 

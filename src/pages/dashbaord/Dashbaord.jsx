@@ -1,9 +1,10 @@
 import { ChevronDown, Star } from "lucide-react";
 import Boxes from "./components/Boxes";
 import Graph from "./components/Graph";
-import { useGetBusinnesInsights, useGetOrderPickup } from "../../Query/Mutate";
+
 import { useEffect, useState } from "react";
 import React from "react";
+import { useGetOrderPickup } from "../../Query/dashboard queries/DashboardApi";
 
 const Dashboard = () => {
   const MEDIA_URL = import.meta.env.VITE_MEDIA_URL;

@@ -7,7 +7,7 @@ import {
   useGetProductCategoriesForDropDown,
   useGetProducts,
   useGetProductsByCategory,
-} from "../../../Query/Mutate";
+} from "./../../../Query/products services/ProductsApi";
 
 const Product = () => {
   const [categoryId, setCategoryId] = useState(null);
@@ -28,7 +28,7 @@ const Product = () => {
     if (filtered?.data) {
       setProductsFromData(filtered.data);
     } else if (error) {
-      console.log(error)
+      console.log(error);
       alert("backend didnt make it an empty array");
     }
   }, [filtered, error]);

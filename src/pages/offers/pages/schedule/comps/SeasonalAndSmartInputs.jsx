@@ -3,12 +3,13 @@ import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import DropdownInput from "../../../../product/products list/pages/add product/component/DropdownInput";
 import Calender from "../../../../../components/DatePicker";
+
 import {
   useGetAllBatches,
   useGetProductIds,
   useGetStockDetails,
-  usePostEventOffers,
-} from "../../../../../Query/Mutate";
+} from "../../../../../Query/products services/ProductsApi";
+import { usePostEventOffers } from "../../../../../Query/offers queries/OffersApi";
 
 // Validation schema example
 const validationSchema = Yup.object({

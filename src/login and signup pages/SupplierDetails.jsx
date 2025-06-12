@@ -57,7 +57,7 @@ const SupplierDetails = () => {
   });
 
   return (
-    <div className="-my-10 overflow-y-scro">
+    <div className="-my-8 h-[90vh] w-full overflow-hidden">
       {/* top things */}
       <h1 className="text-2xl font-bold mb-1">Supplier details</h1>
       <p className="text-md text-gray-700">Fill supplier information</p>
@@ -130,11 +130,12 @@ const SupplierDetails = () => {
         {/* categories */}
         <div className="relative w-full">
           <label>Categories</label>
-          <div className="absolute w-full">
+          <div className="absolute w-full ">
             <DropDown
               setvalue={setSeleectedCategory}
               options={categories}
               placeholder="Select your category"
+              bg={"bg-[#F6FBF8]"}
             />
           </div>
         </div>
@@ -146,11 +147,17 @@ const SupplierDetails = () => {
               options={categories}
               placeholder={"District"}
               setValue=""
+              bg={"bg-[#F6FBF8]"}
             />
           </div>
           <div className="w-[50%]">
             <label htmlFor="">State</label>
-            <DropDown options={categories} placeholder={"State"} />
+            <DropDown
+              options={categories}
+              placeholder={"State"}
+              setValue=""
+              bg={"bg-[#F6FBF8]"}
+            />
           </div>
         </div>
         {/* address */}
@@ -178,7 +185,10 @@ const SupplierDetails = () => {
         <button className="bg-[#F6FBF8] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-[#47BA82] hover:bg-[#47BA82] hover:text-white outline outline-[#47BA82]">
           Cancel
         </button>
-        <button className="bg-[#47BA82] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-white hover:bg-[#3DA372] outline outline-[#47BA82]">
+        <button
+          onClick={() => formik.handleSubmit()}
+          className="bg-[#47BA82] cursor-pointer w-34 py-1 transition-all duration-300 rounded-lg font-semibold text-white hover:bg-[#3DA372] outline outline-[#47BA82]"
+        >
           Next
         </button>
       </div>

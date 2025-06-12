@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import DatePickerCalendar from "./DatePickerCalendar";
 import ShippingScheduleBoxDetials from "./ShippingScheduleBoxDetials";
-import { useGetAllBatches, useGetProductIds } from "../../../Query/Mutate";
+
 import axios from "axios";
 import { Plus } from "lucide-react";
 

@@ -23,8 +23,7 @@ import Return from "./pages/return management/Return";
 import Shipping from "./pages/shipping management/Shipping";
 import Refund from "./pages/payments/refund/Refund";
 import RoleManagement from "./pages/user role/role management/RoleManagement";
-import IdConfiguration from "./pages/configuration/ID configuration/IdConfiguration";
-import Email from "./pages/configuration/email/Email";
+
 import Wallet from "./pages/payments/wallet/Wallet";
 import AccountsLedger from "./pages/payments/accounts ledger/AccountsLedger";
 import Offers from "./pages/offers/Offers";
@@ -36,7 +35,6 @@ import MyProfile from "./pages/my profile/MyProfile";
 import Mock from "./Mock";
 import ShippingSchedule from "./pages/shipping management/Components/ShippingSchedule";
 import AddUser from "./pages/user role/Add user/AddUser";
-import NotificationModal from "./pages/notification/Notification";
 
 export const router = createBrowserRouter([
   { path: "/*", element: <ErrorPage /> },
@@ -77,9 +75,9 @@ export const router = createBrowserRouter([
       { path: "/user-role", element: <UserRole /> },
       { path: "/user-role/add-user", element: <AddUser /> },
       { path: "/user-role/role-management", element: <RoleManagement /> },
-      { path: "/configuration", element: <Configuration /> },
+      // { path: "/configuration", element: <Configuration /> },
       // { path: "/configuration/iD-configuration", element: <IdConfiguration /> },
-      { path: "/configuration/email", element: <Email /> },
+      // { path: "/configuration/email", element: <Email /> },
       { path: "/mock", element: <Mock /> },
     ],
   },

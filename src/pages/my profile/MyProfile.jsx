@@ -15,7 +15,7 @@ const MyProfile = () => {
           ? "Personal Details"
           : page === "company"
           ? "Company"
-          : "Security"}{" "}
+          : "Security"}
       </h1>
 
       {/* navbar */}
@@ -31,6 +31,7 @@ const MyProfile = () => {
           >
             Personl Details
           </div>
+
           <div
             onClick={() => setPage("company")}
             className={`cursor-pointer w-[130px] h-[40px] flex justify-center items-center transition-all duration-300 ${
@@ -85,7 +86,7 @@ const MyProfile = () => {
               <p>Company@gmail.com</p>
             </div>
           </div>
-          {isEditable ? (
+          {page === "security" ? null : isEditable ? (
             <X
               size={20}
               onClick={() => setISEditable(false)}
