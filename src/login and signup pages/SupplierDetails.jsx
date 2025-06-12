@@ -57,7 +57,7 @@ const SupplierDetails = () => {
   });
 
   return (
-    <div className="-my-10">
+    <div className="-my-8 h-[90vh] w-full overflow-hidden">
       {/* top things */}
       <h1 className="text-2xl font-bold mb-1">Supplier details</h1>
       <p className="text-md text-gray-700">Fill supplier information</p>
