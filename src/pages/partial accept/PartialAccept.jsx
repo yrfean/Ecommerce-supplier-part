@@ -90,7 +90,7 @@ const PartialAccept = () => {
     setNewItems(currentOrders);
   }, [currentPage]);
   return (
-    <div className="p-3">
+    <div className="p-3 h-full overflow-auto custom-scrollbar">
       <h1 className="text-2xl font-semibold mt-2 mb-3">Partial Accept List</h1>
       <div className="bg-[#F8F8F8] w-full rounded-lg p-2 h-[60px] flex justify-between">
         {/* filter  and sorting*/}

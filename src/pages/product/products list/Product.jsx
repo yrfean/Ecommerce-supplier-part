@@ -60,7 +60,7 @@ const Product = () => {
   }, [value, category]);
 
   return (
-    <div className="p-3 pt-4 w-full">
+    <div className="p-3 pt-4 w-full h-full">
       {/* title and add prod btn */}
       <div className="flex justify-between w-full mb-3">
         <h1 className="text-xl font-bold">Product List</h1>
