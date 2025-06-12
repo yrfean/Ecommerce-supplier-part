@@ -100,7 +100,15 @@ const PartialAccept = () => {
             <FilterOrSorting
               icon={Funnel}
               options={["Manthi", "Biryani"]}
-              placeholder={"Category"}
+              placeholder={"Filter"}
+              setValue={setValue}
+            />
+          </div>
+          <div className="w-[150px]">
+            <FilterOrSorting
+              icon={Funnel}
+              options={["Manthi", "Biryani"]}
+              placeholder={"Sort"}
               setValue={setValue}
             />
           </div>
@@ -117,7 +125,7 @@ const PartialAccept = () => {
               placeholder="Search product here..."
               className="bg-white rounded-lg h-[45px] font-semibold px-3 pl-8 outline-none"
             />
-            <Search className="absolute w-5 h-5 text-gray-500 top-[12px] left-[8px]" />
+            <Search className="absolute w-4 h-4 text-gray-500 top-[15px] left-[8px]" />
           </div>
           {/* pagination buttons */}
           <div className="space-x-2">

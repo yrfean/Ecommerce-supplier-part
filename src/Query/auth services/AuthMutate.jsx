@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { tokenLessApi } from "../../axios/axios";
+import { useNavigate } from "react-router-dom";
 
 export const useLogin = () => {
   return useMutation({
@@ -7,7 +8,7 @@ export const useLogin = () => {
       const response = await tokenLessApi.post("auth/supplier-login/", credentials);
       return response.data;
     },
-    
+
     onSuccess: (data) => {
       // You can handle successful login here, like storing the token
       localStorage.setItem("token", data.token);
@@ -20,6 +21,7 @@ export const useLogin = () => {
 };
 
 export const useSignup = () => {
+  const navigate = useNavigate()
   return useMutation({
     mutationFn: async (userData) => {
       const response = await tokenLessApi.post("company_register/", userData);
@@ -28,43 +30,44 @@ export const useSignup = () => {
     onSuccess: (data) => {
       // You can handle successful signup here
       console.log("Signup successful:", data);
+      navigate('/login')
     },
     onError: (error) => {
       console.error("Signup error:", error);
     },
   });
-}; 
+};
 
 export const useSendOtp = () => {
   return useMutation({
-      mutationFn: async (data) => {
-          const response = await tokenLessApi.post("send-otp/", data);
-          // console.log(response);
-          localStorage.setItem('token', response.data.token)
-          return response.data;
-      },
-      onError: (error) => {
-          console.error("Send OTP error:", error);
-      },
+    mutationFn: async (data) => {
+      const response = await tokenLessApi.post("send-otp/", data);
+      // console.log(response);
+      localStorage.setItem('token', response.data.token)
+      return response.data;
+    },
+    onError: (error) => {
+      console.error("Send OTP error:", error);
+    },
   });
 };
 
 export const useVerifyOtp = () => {
   return useMutation({
-      mutationFn: async (data) => {
-          const response = await tokenLessApi.post("verify-otp/", data, {
-              headers: {
-                  Authorization: `${localStorage.getItem('token')}`
-              }
-          });
-          return response.data;
-      },
-      onSuccess: (data) => {
-          localStorage.removeItem('token')
-      },
-      onError: (error) => {
-          console.error("Verify OTP error:", error);
-      },
+    mutationFn: async (data) => {
+      const response = await tokenLessApi.post("verify-otp/", data, {
+        headers: {
+          Authorization: `${localStorage.getItem('token')}`
+        }
+      });
+      return response.data;
+    },
+    onSuccess: (data) => {
+      localStorage.removeItem('token')
+    },
+    onError: (error) => {
+      console.error("Verify OTP error:", error);
+    },
   });
-}; 
+};
 
