@@ -81,7 +81,7 @@ const Sidebar = () => {
   //   setLocation(window.location.pathname);
   // }, [window.location.pathname]);
   return (
-    <aside className="h-[95dvh] bg-[#F1F1F1] w-64 shadow-sm p- flex flex-col rounded-2xl fixed top-1/2 left6 transform -translate-y-1/2">
+    <aside className="h-full w-full bg-[#F1F1F1] shadow-sm p-4 flex flex-col rounded-2xl">
       {/* logo */}
       <div className="w-full absolut cursor-pointer flex justify-center items-center mt-7 mb-1">
         <img
