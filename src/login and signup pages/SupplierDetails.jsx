@@ -57,8 +57,9 @@ const SupplierDetails = () => {
   });
 
   return (
-    <div className="-my-8 h-[90vh] w-full overflow-hidden">
+    <div className="-mt-9 -mx-9 px-1 h-full  overflow-x-hidde overflow-y-auto custom-scrollba">
       {/* top things */}
+
       <h1 className="text-2xl font-bold mb-1">Supplier details</h1>
       <p className="text-md text-gray-700">Fill supplier information</p>
       <PageProgresser />
@@ -128,9 +129,9 @@ const SupplierDetails = () => {
           />
         </div>
         {/* categories */}
-        <div className="relative w-full">
+        <div className="w-full">
           <label>Categories</label>
-          <div className="absolute w-full ">
+          <div className="w-full h-12">
             <DropDown
               setvalue={setSeleectedCategory}
               options={categories}
@@ -140,8 +141,8 @@ const SupplierDetails = () => {
           </div>
         </div>
         {/* state and dist */}
-        <div className="flex w-full">
-          <div className="w-[50%]">
+        <div className="flex w-full gap-2 h-12">
+          <div className="w-[50%] h-full">
             <label htmlFor="">District</label>
             <DropDown
               options={categories}
@@ -150,7 +151,7 @@ const SupplierDetails = () => {
               bg={"bg-[#F6FBF8]"}
             />
           </div>
-          <div className="w-[50%]">
+          <div className="w-[50%] h-full">
             <label htmlFor="">State</label>
             <DropDown
               options={categories}

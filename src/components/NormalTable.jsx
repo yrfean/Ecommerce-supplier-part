@@ -1,40 +1,38 @@
-const NormalTable = ({ titles, values, setValue }) => {
+const NormalTable = ({ columns, values, setValue }) => {
   return (
     <div className="w-full h-full">
       <table className="w-full border-separate table-fixed border-spacing-y-[5.5px]">
         <thead className="sticky top-1 z-10">
           <tr className="bg-[#354A5F] text-white rounded-lg">
-            {titles.map((t, index) => (
+            <th className={`px-4 py-2  rounded-tl-lg`}>Si NO</th>
+            {columns.map((col, index) => (
               <th
                 key={index}
                 className={`px-4 py-2 ${
-                  index === 0
-                    ? "rounded-tl-lg"
-                    : index === titles.length - 1
-                    ? "rounded-tr-lg"
-                    : ""
+                  index === columns.length - 1 ? "rounded-tr-lg" : ""
                 }`}
               >
-                {t}
+                {col.label}
               </th>
             ))}
           </tr>
         </thead>
 
         <tbody className="mt-2">
-          {values?.map((each, index) => (
+          {values?.map((row, index) => (
             <tr
-              onClick={() => setValue(each)}
+              onClick={() => setValue(row)}
               key={index}
               className={`text-black text-center cursor-pointer bg-[#F8F8F8] rounded-lg overflow-hidden`}
             >
-              {each?.map((e, index) => {
-                return (
-                  <td key={index} className="px- py-2">
-                    {e}
-                  </td>
-                );
-              })}
+              <td className=" py-2 max-h-30 overflow-hidden">
+                <div className="line-clamp-1">{index + 1}</div>
+              </td>
+              {columns.map((col) => (
+                <td className=" py-2 max-h-30 overflow-hidden">
+                  <div className="line-clamp-1">{row[col.acr]} </div>
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

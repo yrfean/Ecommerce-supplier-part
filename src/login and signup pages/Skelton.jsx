@@ -10,7 +10,7 @@ const Skelton = ({ Comp }) => {
         />
       </div>
       {/* credentials */}
-      <div className="pt-14 px-14 w-[47%] rounded-4xl h-[98%] shadow bg-white">
+      <div className="pt-14 px-14 w-[47%] rounded-4xl h-full shadow bg-white">
         <Comp />
       </div>
     </div>

@@ -7,7 +7,7 @@ const AccountsLedger = () => {
   const [page, setPage] = useState("today");
 
   return (
-    <div>
+    <div className="w-full px-1">
       <h1 className="text-2xl font-semibold my-2">Accounts Ledger</h1>
 
       {/* navbar */}
